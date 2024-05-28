@@ -1,0 +1,68 @@
+<div class="w-full"
+    style="display: flex; flex-direction: column; height: 100vh; background: url('/assets/login\ background.png'); background-size: cover; background-position: center;">
+
+
+    <div class="flex align-items-center justify-content-between px-5" style="height: 100px;">
+        <div>
+            <img src="https://karnatakabank.com/sites/default/files/logo.gif" width="300px" height="55px" alt="">
+        </div>
+    </div>
+
+    <div style="flex-grow: 1 ; flex-wrap: wrap-reverse; align-items: center;" class="flex" >
+        <!-- Left side -->
+        <div class="col-7">
+            <div class="mt-1 ml-5 text-center" style="padding-top: 100px;">
+                <img src="/assets/Group 1171276862.png" width="402px" alt="">
+            </div>
+        </div>
+
+        <!--Right side - login form -->
+        <div class="col-5">
+            <div class="mx-6 mt-1">
+                <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()">
+                    <div class="text-center" style="font-weight: 600; font-size: 35px;">Login</div>
+                    <div class="flex flex-column gap-2" class="mb-5 mt-3">
+                        <label for="username" style="font-size: 20px; font-weight: 400;">Email</label>
+                        <div class="bg-white p-1 border-round-lg shadow-2" style="margin-top: 16px;">
+                            <input pInputText type="text" formControlName="username"
+                                class=" form-control inputfield w-full" name="login" maxlength="10" minlength="10"
+                                style="border: none; height: 56px; font-size: 16px; font-weight: 400; border-radius: 15px; border-color: #E3E3E3; color: black;"
+                                placeholder="you@domain.com" />
+                        </div>
+                    </div>
+
+                    <div class="flex flex-column gap-2" class="mb-2 mt-3">
+                        <label for="password" style="font-size: 20px; font-weight: 400;">Password</label>
+                        <div class="flex align-items-center bg-white p-1 border-round-lg shadow-2"
+                            style="margin-top: 12px;">
+                            <input pInputText type="text" class="form-control inputfield w-full" name="login"
+                                formControlName="password" style="border: none; height: 40px;"
+                                placeholder="Enter your password"
+                                style="border: none; height: 56px; font-size: 16px; font-weight: 400; border-radius: 15px; border-color: #E3E3E3; color: black;"
+                                [type]="passwordVisible ? 'text' : 'password'" />
+
+                            <i class="pi pi-eye cursor-pointer mx-2" (click)="toggleFieldTextType()"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="flex align-items-center justify-content-between mb-4" style="margin-top: 32px;">
+                        <div class="flex align-items-center">
+                            <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                            <label for="rememberme1" class="text-sm"
+                                style=" font-size: 14px; font-weight: 500; color:#6D6D6D;">Remember Password</label>
+                        </div>
+                        <a class="font-medium no-underline ml-2 text-right"
+                            style="color: #92278F; font-size: 14px; font-weight: 600;">Forgot
+                            password?</a>
+                    </div>
+
+                    <button pButton pRipple type="submit" [disabled]="!loginForm.valid" label="Login"
+                        class="p-button-help w-full border-round-sm" style="background-color: #92278F; height: 58px; border-radius: 8px; gap: 10px;
+                        font-size: 18px; font-weight: 600;"></button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

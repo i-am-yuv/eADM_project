@@ -1,0 +1,39 @@
+.animation-logo {
+    display: inline-block;
+    padding-right: 50px;
+    padding-left: 0;
+    animation: moveText 2s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes moveText {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+:host::ng-deep {
+    .p-inputtext:enabled:focus {
+        box-shadow: none !important;
+    }
+
+    .p-inputtext {
+        font-size: 0.8rem;
+        color: #92278F;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .col-7 {
+        flex: 0 0 100%;
+        /* Each column takes 100% width on smaller screens */
+    }
+    .col-5 {
+        flex: 0 0 100%;
+        /* Each column takes 100% width on smaller screens */
+    }
+}

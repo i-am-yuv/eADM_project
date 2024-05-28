@@ -1,0 +1,68 @@
+<div style="height: 100vh; display: flex; flex-direction: column;" class="w-full">
+
+    <!-- top bar Code -->
+    <div style=" background-image: url('/assets/Frame 1618868238 (1).png');
+        background-size: cover;
+        background-position: center;
+        background-repeat:repeat; 
+        height: 118px; justify-content: space-between;
+        width: -webkit-fill-available;
+        align-items: center;" class="flex">
+        <img src="/assets/Group 1171276912.png" width="300px" alt="" style="margin-left: 50px;">
+        <img src="/assets/Group 1171276911.png" width="600px" alt="">
+    </div>
+
+    <!-- left bar Code -->
+    <div style="flex-grow: 1;" class="flex">
+        <div class="col-2 bg-white">
+
+            <div class="mx-4 my-5 flex"
+                style="flex-direction: column; height: -webkit-fill-available; justify-content: space-between;">
+                <div class="">
+                    <!--Home -->
+                    <div class="flex gap-3" style="align-items: center; cursor: pointer;">
+                        <i class="pi pi-home text-xl" style="color: #92278F;"></i>
+                        <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Home</div>
+                    </div>
+
+                    <!--Reports -->
+                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;">
+                        <i class="pi pi-file text-xl" style="color: #92278F;"></i>
+                        <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Reports
+                        </div>
+                    </div>
+
+
+                    <!--Help -->
+                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;">
+                        <i class="pi pi-question-circle text-xl" style="color: #92278F;"></i>
+                        <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Help</div>
+                    </div>
+                </div>
+
+                <!-- Down Content -->
+                <div class="">
+                    <!--Settings -->
+                    <div class="flex gap-3" style="align-items: center; cursor: pointer;">
+                        <i class="pi pi-cog text-xl" style="color: #6D6D6D;"></i>
+                        <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">Settings</div>
+                    </div>
+
+                    <!--Logout -->
+                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;" routerLink="/">
+                        <i class="pi pi-sign-in text-xl" style="color: #6D6D6D;"></i>
+                        <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">Logout
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-10 " style="background-color: #EEEEEE;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+
+</div>
