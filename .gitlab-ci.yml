@@ -11,8 +11,11 @@ build-frontend:
     # - npm run build
     # - node_modules/.bin/ng build
     - node_modules/.bin/ng build --base-href /eadm/
-  except:
-    - develop
+  artifacts:
+    name: "staging-dist-output"
+    paths:
+      - dist
+    expire_in: 1 week
 
 deploy-frontend:
   stage: deploy
