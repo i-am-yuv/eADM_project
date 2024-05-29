@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Record } from '../model';
+import { MessageService } from 'primeng/api';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-landing',
@@ -13,8 +15,9 @@ export class LandingComponent {
   rows = 10;
   
   date1: Date | undefined;
+  uploadUrl = '324324';
 
-  constructor() { }
+  constructor(private messageService : MessageService) { }
 
   ngOnInit() {
     this.records = [
@@ -94,6 +97,40 @@ export class LandingComponent {
 
   isFirstPage(): boolean {
     return this.records ? this.first === 0 : true;
+  }
+
+  importResponseHandler(event: any) {
+    if (event.originalEvent.status === 200) {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Successful',
+        detail: 'All records imported successfully',
+        life: 5000,
+      });
+    }
+    // this.getCatalogFilter(this.search);
+  }
+ 
+  importErrorHandler(event: any) {
+    //
+    var array = event.error.error.text.split(/\r?\n/);
+    var count = array.length - 2;
+    var final = count + ' Invalid  records';
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Import Error',
+      detail: final,
+      life: 5000,
+    });
+ 
+    var blob = new Blob([event.error.error.text], {
+      type: 'text/plain',
+    });
+    saveAs(blob, 'StoreCatalogImportError.csv');
+    setTimeout(HelloWorld, 4000);
+    function HelloWorld() {
+      window.location.reload();
+    }
   }
 
 }

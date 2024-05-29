@@ -20,11 +20,9 @@
                     <div class="col-6"></div>
                     <div class="col-6 text-left">
                         <div class="mb-2" style="font-size: 14px; font-weight: 600; color: #4F4F4F; ">Date</div>
-                        <p-calendar [(ngModel)]="date1" [showIcon]="true" 
-                           [showButtonBar]="true"/>
+                        <p-calendar [(ngModel)]="date1" [showIcon]="true" [showButtonBar]="true" />
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -43,7 +41,8 @@
                     Upload here....</div>
                 <div class="border-1" style="border-color: #B0B0B0;   border-top: 1px;"></div>
 
-                <div class="flex mt-1" style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
+                <div class="flex mt-1"
+                    style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
                     <div class="col-8">
                     </div>
 
@@ -53,9 +52,16 @@
                             <i class="pi pi-image mx-4 " style="color: #6D6D6D;"></i>
 
                             <!-- Upload Button -->
-                            <div class="flex align-items-center justify-content-center mx-2"
+                            <!-- <div class="flex align-items-center justify-content-center mx-2"
                                 style="width: 145px; height: 32px; border-radius: 4px; background-color:#92278F; cursor: pointer;">
                                 <div style="font-size: 16px; font-weight: 600; color: #FFFFFF;">Upload</div>
+                            </div> -->
+                            <!-- New Btn -->
+                            <div class="">
+                                <p-fileUpload mode="basic" name="file" [url]="uploadUrl" accept=".csv" [maxFileSize]="1000000"
+                                [auto]="true" label="Upload" chooseLabel="Upload" class="mr-2 inline-block p-button-success"
+                                (onUpload)="importResponseHandler($event)" (onError)="importErrorHandler($event)"
+                                style="border-radius: 4px; background-color: #92278F; color: white; "></p-fileUpload>
                             </div>
                         </div>
                     </div>
@@ -69,13 +75,14 @@
             style="flex-wrap: wrap; justify-content: space-between; align-self: center; margin-top: 32px;">
 
             <div class="col-6 ">
+                <!-- Success -->
                 <div class="flex border-2"
                     style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000; flex-wrap: wrap;">
 
                     <div class="col-7 flex ml-2" style="justify-content: start;align-items: center;">
                         <i class="pi pi-check" style="color: #16A34A;"></i>
 
-                        <div class="ml-2 lg:text-xl sm:text-sm m:text-base"  style="font-weight: 600; color: #16A34A;">
+                        <div class="ml-2 lg:text-xl sm:text-sm m:text-base" style="font-weight: 600; color: #16A34A;">
                             Uploaded file validated</div>
                     </div>
                     <div class="col-4">
@@ -83,6 +90,21 @@
                          padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px;">
                             <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
                             <div class="ml-2" style="font-size: 16px; font-weight: 600; color: #FFFFFF;">Download</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Failed -->
+                <div class="flex border-2"
+                    style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000; flex-wrap: wrap;">
+                    <div class="col-7 flex ml-2" style="justify-content: start;align-items: center;">
+                        <i class="pi pi-times" style="color: #C13E30;"></i>
+                        <div class="ml-2 lg:text-xl sm:text-sm m:text-base" style="font-weight: 600; color: #C13E30;">
+                            Error occurred</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="flex" style="justify-content: center; align-items: center;  background-color: #F3EEED; border-radius: 4px;
+                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px;">
+                            <div class="" style="font-size: 16px; font-weight: 600; color: #92278F;">Check</div>
                         </div>
                     </div>
                 </div>

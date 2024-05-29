@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -51,8 +51,8 @@ import { BrowserModule } from '@angular/platform-browser';
     BlockUIModule,
     MultiSelectModule,
     HttpClientModule,
-    ProgressBarModule
-    
+    ProgressBarModule,
+    FileUploadModule 
   ], providers: [
     HttpClientModule,
     MessageService,

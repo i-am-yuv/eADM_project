@@ -12,15 +12,21 @@ export class LoginComponent {
 
   loginForm!: FormGroup;
   passwordVisible = false;
+  isTabletView: boolean = false;
 
   constructor(private router: Router, private formBuilder: FormBuilder)
   { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      username: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.maxLength(30),])
     })
+
+    this.checkScreenSize();
+    window.addEventListener('resize', () => {
+      this.checkScreenSize();
+    });
   }
 
   toggleFieldTextType() {
@@ -34,14 +40,7 @@ export class LoginComponent {
   }
 
   // code for left pannel removal for less than tablet view
-  isTabletView: boolean = false;
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkTabletView();
-  }
-
-  checkTabletView() {
-    this.isTabletView = window.innerWidth < 1000;
+  checkScreenSize() {
+    this.isTabletView = window.matchMedia('(max-width: 767px)').matches;
   }
 }
