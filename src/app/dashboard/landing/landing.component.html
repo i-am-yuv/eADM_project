@@ -4,7 +4,7 @@
     <div style="margin-top: 30px; align-items: center; justify-content: center; width:-webkit-fill-available;"
         class="flex">
         <div style="width: 166px; height: 52px; background-color: #92278F; display: flex; border-radius: 6px;
-         align-items: center; justify-content: center;">
+         align-items: center; justify-content: center; cursor: pointer;">
             <div style="font-size: 20px; font-weight: 600; line-height: 24px; color:#FFFFFF">e-ADM</div>
         </div>
     </div>
@@ -13,7 +13,7 @@
     <div style="border-radius: 6px; background-color: #FFFFFF; margin-top: 30px; margin-left: 16px; margin-right: 16px; margin-bottom: 30px;"
         class="p-4">
 
-        <div class="flex" style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
+        <div *ngIf="false" class="flex" style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
             <div class="col-6"></div>
             <div class="col-6">
                 <div class="flex" style="flex-wrap: wrap-reverse;">
@@ -87,14 +87,14 @@
                     </div>
                     <div class="col-4">
                         <div class="flex gap-2" style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
-                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse;">
+                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse; cursor: pointer;">
                             <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
                             <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">Download</div>
                         </div>
                     </div>
                 </div>
                 <!-- Failed -->
-                <div class="flex border-2"
+                <div *ngIf="false" class="flex border-2"
                     style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000; flex-wrap: wrap;">
                     <div class="col-7 flex ml-2" style="justify-content: start;align-items: center;">
                         <i class="pi pi-times" style="color: #C13E30;"></i>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="col-4">
                         <div class="flex" style="justify-content: center; align-items: center;  background-color: #F3EEED; border-radius: 4px;
-                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px;">
+                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; cursor: pointer;">
                             <div class="" style="font-size: 16px; font-weight: 600; color: #92278F;">Check</div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                                     <tr>
                                         <td>{{ record.date }}</td>
                                         <td>{{ record.accountNumber }}</td>
-                                        <td>{{ record.status }}</td>
+                                        <td [ngClass]="{'approvedText': record.status == 'Approved' , 'rejectedText': record.status != 'Approved' }">{{ record.status }}</td>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="paginatorleft">
