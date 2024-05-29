@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api/messageservice';
@@ -31,6 +31,17 @@ export class LoginComponent {
   {
     // alert(JSON.stringify(this.loginForm.value) );
     this.router.navigate(['/home']);
+  }
 
+  // code for left pannel removal for less than tablet view
+  isTabletView: boolean = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkTabletView();
+  }
+
+  checkTabletView() {
+    this.isTabletView = window.innerWidth < 1000;
   }
 }
