@@ -1,0 +1,35 @@
+:host::ng-deep {
+    .p-datatable table {
+        min-width: 39rem !important;
+    }
+
+    .p-button {
+        color: #4F4F4F;
+        background: none;
+        border: 1px solid #ced4da;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        transition: none;
+        border-radius: 3px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .flex-item {
+      flex: 0 0 calc(100% - 10px);
+      /* Each item takes 100% width with 10px spacing on smaller screens */
+    }
+  
+    .col-8,
+    .col-4,
+    .col-6,
+    .col-7,
+    .col-5 {
+      flex: 1 0 calc(100% - 10px);
+      /* Each item takes 100% width with spacing on smaller screens */
+      margin-right: 0;
+      /* Remove right margin for col-8 */
+      margin-bottom: 10px;
+      /* Adjust bottom margin for col-4 */
+    }
+  }

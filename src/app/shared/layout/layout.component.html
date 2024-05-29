@@ -1,23 +1,26 @@
 <div style="height: 100vh; display: flex; flex-direction: column;" class="w-full">
 
     <!-- top bar Code -->
-    <div style=" background-image: url('/assets/Frame 1618868238 (1).png');
+    <div style=" background-image: url('/assets/Frame 1618868238 (2).png');
         background-size: cover;
         background-position: center;
         background-repeat:repeat; 
-        height: 118px; justify-content: space-between;
+        justify-content: space-between;
         width: -webkit-fill-available;
-        align-items: center;" class="flex">
-        <img src="/assets/Group 1171276912.png" width="300px" alt="" style="margin-left: 50px;">
-        <img src="/assets/Group 1171276911.png" width="600px" alt="">
+        align-items: center; justify-content: start;" class="flex">
+        <div class="mx-3" *ngIf="isTabletView">
+            <i (click)="sidebarVisible = true" class="pi pi-bars" style="color: #EEEEEE;"></i>
+        </div>
+        <div style="height:80px; display: flex; align-items: center;">
+            <img src="/assets/Group 1171276912.png" width="200px" alt="" style="margin-left: 50px;">
+        </div>
     </div>
 
-    <!-- left bar Code -->
     <div style="flex-grow: 1;" class="flex">
-        <div class="col-2 bg-white">
+        <!-- left bar Code -->
+        <div *ngIf="!isTabletView" class="col-2 bg-white">
 
-            <div class="mx-4 my-5 flex"
-                style="flex-direction: column; height: -webkit-fill-available; justify-content: space-between;">
+            <div class="mx-4 my-5 flex" style="flex-direction: column; justify-content: space-between;">
                 <div class="">
                     <!--Home -->
                     <div class="flex gap-3" style="align-items: center; cursor: pointer;">
@@ -41,15 +44,17 @@
                 </div>
 
                 <!-- Down Content -->
-                <div class="">
+                <div style=" position: fixed; bottom: 0;" class="mb-3">
                     <!--Settings -->
-                    <div class="flex gap-3" style="align-items: center; cursor: pointer;">
+                    <div class="flex gap-3" style="align-items: center; cursor: pointer; ">
                         <i class="pi pi-cog text-xl" style="color: #6D6D6D;"></i>
-                        <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">Settings</div>
+                        <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">Settings
+                        </div>
                     </div>
 
                     <!--Logout -->
-                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;" routerLink="/">
+                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
+                        routerLink="/">
                         <i class="pi pi-sign-in text-xl" style="color: #6D6D6D;"></i>
                         <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">Logout
                         </div>
@@ -58,11 +63,59 @@
             </div>
 
         </div>
-
-        <div class="col-10 " style="background-color: #EEEEEE;">
+        <div *ngIf="!isTabletView" class="col-10" style="background-color: #EEEEEE;">
+            <router-outlet></router-outlet>
+        </div>
+        <div *ngIf="isTabletView" class="col-12" style="background-color: #EEEEEE;">
             <router-outlet></router-outlet>
         </div>
     </div>
+</div>
+
+<div>
+    <p-sidebar [(visible)]="sidebarVisible">
+        <div>
+            <div class="">
+                <!--Home -->
+                <div class="flex gap-3" style="align-items: center; cursor: pointer;">
+                    <i class="pi pi-home text-xl" style="color: #92278F;"></i>
+                    <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Home
+                    </div>
+                </div>
+
+                <!--Reports -->
+                <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;">
+                    <i class="pi pi-file text-xl" style="color: #92278F;"></i>
+                    <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Reports
+                    </div>
+                </div>
 
 
+                <!--Help -->
+                <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;">
+                    <i class="pi pi-question-circle text-xl" style="color: #92278F;"></i>
+                    <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Help
+                    </div>
+                </div>
+            </div>
+
+            <!-- Down Content -->
+            <div style=" position: fixed; bottom: 0;" class="mb-3">
+                <!--Settings -->
+                <div class="flex gap-3" style="align-items: center; cursor: pointer; ">
+                    <i class="pi pi-cog text-xl" style="color: #6D6D6D;"></i>
+                    <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">
+                        Settings
+                    </div>
+                </div>
+
+                <!--Logout -->
+                <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;" routerLink="/">
+                    <i class="pi pi-sign-in text-xl" style="color: #6D6D6D;"></i>
+                    <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">Logout
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-sidebar>
 </div>

@@ -10,12 +10,128 @@
     </div>
 
     <!-- Down Part -->
-    <div style="border-radius: 6px; background-color: #FFFFFF; margin-top: 30px; margin-left: 16px; margin-right: 16px; margin-bottom: 30px;" class="p-4">
-      
-        <div class="bg-gray-500">
-            <div style="display: flex; flex-direction: column;">
-              <div style="font-size: 14px; font-weight: 600; color: #4F4F4F;">Compose</div>
+    <div style="border-radius: 6px; background-color: #FFFFFF; margin-top: 30px; margin-left: 16px; margin-right: 16px; margin-bottom: 30px;"
+        class="p-4">
+
+        <div class="flex" style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <div class="flex" style="flex-wrap: wrap-reverse;">
+                    <div class="col-6"></div>
+                    <div class="col-6 text-left">
+                        <div class="mb-2" style="font-size: 14px; font-weight: 600; color: #4F4F4F; ">Date</div>
+                        <p-calendar [(ngModel)]="date1" [showIcon]="true" 
+                           [showButtonBar]="true"/>
+                    </div>
+                </div>
+
             </div>
+        </div>
+
+
+        <!-- Upload Box Code -->
+        <div class="">
+            <div style="display: flex; flex-direction: column;">
+                <div style="font-size: 14px; font-weight: 600; color: #4F4F4F;">Compose</div>
+            </div>
+
+            <div class="border-1 "
+                style="height: 103px; border-radius: 4px; border-width: 1px; margin-top: 10px; border-color: #B0B0B0; ">
+
+                <div
+                    style="font-size: 14px; font-weight: 600; color: #B0B0B0; margin-top: 12px; margin-bottom: 12px; margin-left: 16px;">
+                    Upload here....</div>
+                <div class="border-1" style="border-color: #B0B0B0;   border-top: 1px;"></div>
+
+                <div class="flex mt-1" style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
+                    <div class="col-8">
+                    </div>
+
+                    <div class="col-4">
+                        <div style="display: flex; justify-content: end; align-items: center;">
+                            <i class="pi pi-paperclip" style="color: #6D6D6D;"></i>
+                            <i class="pi pi-image mx-4 " style="color: #6D6D6D;"></i>
+
+                            <!-- Upload Button -->
+                            <div class="flex align-items-center justify-content-center mx-2"
+                                style="width: 145px; height: 32px; border-radius: 4px; background-color:#92278F; cursor: pointer;">
+                                <div style="font-size: 16px; font-weight: 600; color: #FFFFFF;">Upload</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Validation Box Code -->
+        <div class="flex"
+            style="flex-wrap: wrap; justify-content: space-between; align-self: center; margin-top: 32px;">
+
+            <div class="col-6 ">
+                <div class="flex border-2"
+                    style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000; flex-wrap: wrap;">
+
+                    <div class="col-7 flex ml-2" style="justify-content: start;align-items: center;">
+                        <i class="pi pi-check" style="color: #16A34A;"></i>
+
+                        <div class="ml-2 lg:text-xl sm:text-sm m:text-base"  style="font-weight: 600; color: #16A34A;">
+                            Uploaded file validated</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="flex" style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
+                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px;">
+                            <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
+                            <div class="ml-2" style="font-size: 16px; font-weight: 600; color: #FFFFFF;">Download</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6"></div>
+        </div>
+
+        <!-- Result View Table -->
+        <div class="flex"
+            style="flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 32px;">
+
+            <div class="col-8">
+                <div class="border-1 p-3" style=" border-radius: 1px; border-width: 1px;border-color: #000000;">
+                    <div style="font-size: 16px; font-weight: 600; color: #4F4F4F;" class="mb-3">E-ADM Reports</div>
+                    <!-- Table Starts From here -->
+                    <div>
+                        <div class="card" style="overflow-x: scroll;">
+                            <p-table [value]="records" [paginator]="true" [rows]="5" [first]="first"
+                                [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                (onPage)="pageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th style="">Date</th>
+                                        <th style="">Account Number</th>
+                                        <th style="">Status</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-record>
+                                    <tr>
+                                        <td>{{ record.date }}</td>
+                                        <td>{{ record.accountNumber }}</td>
+                                        <td>{{ record.status }}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="paginatorleft">
+                                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" />
+                                </ng-template>
+                                <ng-template pTemplate="paginatorright">
+                                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text" />
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4"></div>
         </div>
     </div>
 

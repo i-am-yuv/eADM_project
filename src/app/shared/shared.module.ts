@@ -21,15 +21,20 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { LayoutComponent } from './layout/layout.component';
 import { RouterModule } from '@angular/router';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
   declarations: [
     LayoutComponent
   ],
-  imports :[ CommonModule, RouterModule],
+  imports :[ CommonModule, RouterModule,SidebarModule],
   exports: [
     CommonModule,
+    CalendarModule,
+    SidebarModule,
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
@@ -47,6 +52,7 @@ import { RouterModule } from '@angular/router';
     MultiSelectModule,
     HttpClientModule,
     ProgressBarModule
+    
   ], providers: [
     HttpClientModule,
     MessageService,
