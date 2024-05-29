@@ -20,7 +20,7 @@
                     <div class="col-6"></div>
                     <div class="col-6 text-left">
                         <div class="mb-2" style="font-size: 14px; font-weight: 600; color: #4F4F4F; ">Date</div>
-                        <p-calendar [(ngModel)]="date1" [showIcon]="true" [showButtonBar]="true" />
+                        <p-calendar [(ngModel)]="date1" [showIcon]="true" />
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                                 <p-fileUpload mode="basic" name="file" [url]="uploadUrl" accept=".csv" [maxFileSize]="1000000"
                                 [auto]="true" label="Upload" chooseLabel="Upload" class="mr-2 inline-block p-button-success"
                                 (onUpload)="importResponseHandler($event)" (onError)="importErrorHandler($event)"
-                                style="border-radius: 4px; background-color: #92278F; color: white; "></p-fileUpload>
+                                style="border-radius: 4px; background: #92278F !important; color: white; "></p-fileUpload>
                             </div>
                         </div>
                     </div>
@@ -86,10 +86,10 @@
                             Uploaded file validated</div>
                     </div>
                     <div class="col-4">
-                        <div class="flex" style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
-                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px;">
+                        <div class="flex gap-2" style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
+                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse;">
                             <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
-                            <div class="ml-2" style="font-size: 16px; font-weight: 600; color: #FFFFFF;">Download</div>
+                            <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">Download</div>
                         </div>
                     </div>
                 </div>
@@ -117,21 +117,21 @@
         <div class="flex"
             style="flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 32px;">
 
-            <div class="col-8">
+            <div class="col-12 md:col-10 lg:col-10">
                 <div class="border-1 p-3" style=" border-radius: 1px; border-width: 1px;border-color: #000000;">
                     <div style="font-size: 16px; font-weight: 600; color: #4F4F4F;" class="mb-3">E-ADM Reports</div>
                     <!-- Table Starts From here -->
                     <div>
                         <div class="card" style="overflow-x: scroll;">
-                            <p-table [value]="records" [paginator]="true" [rows]="5" [first]="first"
+                            <p-table [value]="records" [paginator]="true" [rows]="10" [first]="first"
                                 [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 (onPage)="pageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th style="">Date</th>
-                                        <th style="">Account Number</th>
-                                        <th style="">Status</th>
+                                        <th>Date</th>
+                                        <th>Account Number</th>
+                                        <th>Status</th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-record>
@@ -153,7 +153,7 @@
                 </div>
             </div>
 
-            <div class="col-4"></div>
+            <div class="col-0 md:col-2 lg:col-2"></div>
         </div>
     </div>
 

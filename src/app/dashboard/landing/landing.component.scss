@@ -4,10 +4,10 @@
     }
 
     .p-button {
-        color: rgb(160, 154, 154);
+        color: white;
         border: none;
-        background: none;
-        border: 1px solid #ced4da;
+        // background: none;
+        border: none;
         padding: 0.5rem 1rem;
         font-size: 1rem;
         transition: none;
@@ -17,19 +17,7 @@
       content: none;
   }
 }
-:host::ng-deep{
 
-  .p-button:hover{
-      color: black;
-      border: none;
-      background: none;
-      border: 1px solid #ced4da;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      transition: none;
-      border-radius: 3px;
-  }
-}
 
 
 @media screen and (max-width: 768px) {
