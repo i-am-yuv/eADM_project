@@ -15,7 +15,7 @@ export class LandingComponent {
   rows = 10;
   
   date1: Date | undefined;
-  uploadUrl = '324324';
+  uploadUrl = '324324'; // demo URL
 
   constructor(private messageService : MessageService) { }
 
@@ -100,13 +100,14 @@ export class LandingComponent {
   }
 
   importResponseHandler(event: any) {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Successful',
+      detail: 'All records imported successfully',
+      life: 5000,
+    });
     if (event.originalEvent.status === 200) {
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Successful',
-        detail: 'All records imported successfully',
-        life: 5000,
-      });
+      
     }
     // this.getCatalogFilter(this.search);
   }

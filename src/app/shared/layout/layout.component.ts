@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -12,6 +13,10 @@ export class LayoutComponent {
   sidebarVisible: boolean = false;
   isTabletView : boolean = false;
 
+  constructor(private router : Router)
+  {
+
+  }
   ngOnInit()
   {
     this.checkScreenSize();

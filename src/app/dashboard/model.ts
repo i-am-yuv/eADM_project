@@ -5,6 +5,10 @@ export interface Record {
 
     date: string;
     accountNumber: string;
-    status: string;
-    
+    status: string;   
+}
+export interface allRecords {
+
+    date: string;
+    fileName: string; 
 }

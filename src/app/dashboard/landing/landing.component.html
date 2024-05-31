@@ -1,10 +1,15 @@
+<p-toast></p-toast>
 <div style="align-items: start;  width:-webkit-fill-available;">
 
     <!-- For Middle Button Code -->
     <div style="margin-top: 30px; align-items: center; justify-content: center; width:-webkit-fill-available;"
         class="flex">
-        <div style="width: 166px; height: 52px; background-color: #92278F; display: flex; border-radius: 6px;
-         align-items: center; justify-content: center; cursor: pointer;">
+        <div style="width: 166px; height: 52px; display: flex; border-radius: 6px;
+         align-items: center; justify-content: center; cursor: pointer;
+        background-image: url('assets/Frame 1618868229.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat:no-repeat; ">
             <div style="font-size: 20px; font-weight: 600; line-height: 24px; color:#FFFFFF">e-ADM</div>
         </div>
     </div>
@@ -56,12 +61,13 @@
                                 style="width: 145px; height: 32px; border-radius: 4px; background-color:#92278F; cursor: pointer;">
                                 <div style="font-size: 16px; font-weight: 600; color: #FFFFFF;">Upload</div>
                             </div> -->
-                            <!-- New Btn -->
+
+                            <!-- New Button As FileUpload -->
                             <div class="">
                                 <p-fileUpload mode="basic" name="file" [url]="uploadUrl" accept=".csv" [maxFileSize]="1000000"
                                 [auto]="true" label="Upload" chooseLabel="Upload" class="mr-2 inline-block p-button-success"
                                 (onUpload)="importResponseHandler($event)" (onError)="importErrorHandler($event)"
-                                style="border-radius: 4px; background: #92278F !important; color: white; "></p-fileUpload>
+                                ></p-fileUpload>
                             </div>
                         </div>
                     </div>

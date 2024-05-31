@@ -1,0 +1,64 @@
+<p-toast></p-toast>
+<div style="align-items: start;  width:-webkit-fill-available;">
+
+    <!-- For Middle Button Code -->
+    <div style="margin-top: 30px; align-items: center; justify-content: center; width:-webkit-fill-available;"
+        class="flex">
+        <div style="width: 166px; height: 52px; display: flex; border-radius: 6px;
+         align-items: center; justify-content: center; cursor: pointer;
+         background-image: url('assets/Frame 1618868229.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat:no-repeat; ">
+            <div style="font-size: 20px; font-weight: 600; line-height: 24px; color:#FFFFFF">All Reports</div>
+        </div>
+    </div>
+
+    <!-- Result View Table -->
+    <div class="flex" style="flex-wrap: wrap; justify-content: space-between; align-items: center;
+     margin-top: 32px; margin-bottom: 32px; margin-left: 16px; margin-right: 16px; ">
+
+        <div class="col-12">
+            <div class="border-1 p-3" style="background-color: #FFFFFF; border-radius: 8px; border-width: 1px;border-color: #D1D1D1;">
+                <div style="font-size: 18px; font-weight: 400; color: #101828;" class="mb-3">E - ADM Reports</div>
+                <!-- Table Starts From here -->
+               
+                <div>
+                    <div class="card" style="overflow-x: scroll;">
+                        <p-table [value]="allRecords" [paginator]="true" [rows]="10" [first]="first"
+                            [showCurrentPageReport]="true" 
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                            (onPage)="pageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>File Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-record>
+                                <tr>
+                                    <td style="color: #6D6D6D;">{{ record.date }}</td>
+                                    <td style="color: #6D6D6D;">{{ record.fileName }}</td>
+                                    <td >
+                                        <div class="flex gap-3" style="align-items: center; justify-content: start;">
+                                         <i class="pi pi-eye" style="color: #6D6D6D;"></i>
+                                         <i class="pi pi-download" style="color: #6D6D6D;"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="paginatorleft">
+                                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" />
+                            </ng-template>
+                            <ng-template pTemplate="paginatorright">
+                                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text" />
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
