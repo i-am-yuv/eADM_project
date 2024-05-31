@@ -38,6 +38,20 @@ export class LayoutComponent {
   //   this.isTabletView = window.innerWidth < 1000;
   // }
 
+  navigation( path: string)
+  {
+      if( path == 'home')
+        {
+           this.router.navigate(['/home']);
+           this.sidebarVisible = false;
+        }
+        else if(path = 'reports')
+          {
+            this.router.navigate(['/home/reports']);
+            this.sidebarVisible = false;
+          }
+  }
+
   
 
 }
