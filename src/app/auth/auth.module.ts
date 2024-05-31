@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [

@@ -54,7 +54,7 @@ import { PaginatorModule } from 'primeng/paginator';
     MultiSelectModule,
     HttpClientModule,
     ProgressBarModule,
-    FileUploadModule 
+    FileUploadModule
   ], providers: [
     HttpClientModule,
     MessageService,

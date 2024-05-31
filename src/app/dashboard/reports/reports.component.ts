@@ -11,15 +11,13 @@ import { LayoutService } from 'src/app/shared/layout/layout.service';
 })
 export class ReportsComponent {
 
-  
+
   allRecords!: allRecords[];
-  // first = 0;
-  // rows = 10;
-  
+
   date1: Date | undefined;
   uploadUrl = '324324'; // demo URL
 
-  constructor(private messageService : MessageService , private layoutS : LayoutService) { }
+  constructor(private messageService: MessageService, private layoutS: LayoutService) { }
 
   ngOnInit() {
     this.allRecords = [
@@ -76,37 +74,12 @@ export class ReportsComponent {
     ];
   }
 
-  // next() {
-  //   this.first = this.first + this.rows;
-  // }
-
-  // prev() {
-  //   this.first = this.first - this.rows;
-  // }
-
-  // reset() {
-  //   this.first = 0;
-  // }
-
-  // pageChange(event: any) {
-  //   this.first = event.first;
-  //   this.rows = event.rows;
-  // }
-
-  // isLastPage(): boolean {
-  //   return this.allRecords ? this.first === this.allRecords.length - this.rows : true;
-  // }
-
-  // isFirstPage(): boolean {
-  //   return this.allRecords ? this.first === 0 : true;
-  // }
-
   first: number = 0;
 
-    rows: number = 10;
+  rows: number = 10;
 
-    onPageChange(event: any) {
-        this.first = event.first;
-        this.rows = event.rows;
-    }
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+  }
 }

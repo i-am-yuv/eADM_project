@@ -11,13 +11,11 @@ import { saveAs } from 'file-saver';
 export class LandingComponent {
 
   records!: Record[];
-  // first = 0;
-  // rows = 10;
-  
+
   date1: Date | undefined;
   uploadUrl = '324324'; // demo URL
 
-  constructor(private messageService : MessageService) { }
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
     this.records = [
@@ -74,39 +72,14 @@ export class LandingComponent {
     ];
   }
 
-  // next() {
-  //   this.first = this.first + this.rows;
-  // }
-
-  // prev() {
-  //   this.first = this.first - this.rows;
-  // }
-
-  // reset() {
-  //   this.first = 0;
-  // }
-
-  // pageChange(event: any) {
-  //   this.first = event.first;
-  //   this.rows = event.rows;
-  // }
-
-  // isLastPage(): boolean {
-  //   return this.records ? this.first === this.records.length - this.rows : true;
-  // }
-
-  // isFirstPage(): boolean {
-  //   return this.records ? this.first === 0 : true;
-  // }
-
   first: number = 0;
 
-    rows: number = 10;
+  rows: number = 10;
 
-    onPageChange(event: any) {
-        this.first = event.first;
-        this.rows = event.rows;
-    }
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+  }
 
   importResponseHandler(event: any) {
     this.messageService.add({
@@ -116,11 +89,11 @@ export class LandingComponent {
       life: 5000,
     });
     if (event.originalEvent.status === 200) {
-      
+
     }
     // this.getCatalogFilter(this.search);
   }
- 
+
   importErrorHandler(event: any) {
     //
     var array = event.error.error.text.split(/\r?\n/);
@@ -132,7 +105,7 @@ export class LandingComponent {
       detail: final,
       life: 5000,
     });
- 
+
     var blob = new Blob([event.error.error.text], {
       type: 'text/plain',
     });

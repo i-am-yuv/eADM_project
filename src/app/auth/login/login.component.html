@@ -58,10 +58,13 @@
                     </div>
                     <button pButton pRipple type="submit" [disabled]="!loginForm.valid" label="Login"
                         class="p-button-help w-full border-round-sm" style="background-color: #92278F; height: 58px; border-radius: 8px; gap: 10px;
-                        font-size: 18px; font-weight: 600;"></button>
+                        font-size: 18px; font-weight: 600;">
+                        <i *ngIf="this.submitted" class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+                    </button>
                 </form>
             </div>
 
         </div>
     </div>
 </div>
+<p-toast></p-toast>
