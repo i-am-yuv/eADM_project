@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Record } from '../model';
 import { MessageService } from 'primeng/api';
 import { saveAs } from 'file-saver';
+import { LayoutComponent } from 'src/app/shared/layout/layout.component';
+import { LayoutService } from 'src/app/shared/layout/layout.service';
 
 @Component({
   selector: 'app-landing',
@@ -14,8 +16,10 @@ export class LandingComponent {
 
   date1: Date | undefined;
   uploadUrl = '324324'; // demo URL
+  isTabletView: boolean = false;
 
-  constructor(private messageService: MessageService) { }
+
+  constructor(private messageService: MessageService , private layoutService: LayoutService) { }
 
   ngOnInit() {
     this.records = [
@@ -70,10 +74,15 @@ export class LandingComponent {
       { date: '18/02/23', accountNumber: '9012345678901234', status: 'Approved' },
       { date: '19/02/23', accountNumber: '0123456789012345', status: 'Rejected' },
     ];
+
+    this.layoutService.getData('home');
+    this.checkScreenSize();
+    window.addEventListener('resize', () => {
+      this.checkScreenSize();
+    });
   }
 
   first: number = 0;
-
   rows: number = 10;
 
   onPageChange(event: any) {
@@ -114,6 +123,11 @@ export class LandingComponent {
     function HelloWorld() {
       window.location.reload();
     }
+  }
+
+  // code for left pannel removal for less than tablet view
+  checkScreenSize() {
+    this.isTabletView = window.matchMedia('(max-width: 767px)').matches;
   }
 
 }

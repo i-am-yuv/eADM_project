@@ -1,24 +1,46 @@
 <p-toast></p-toast>
 <div style="align-items: start;  width:-webkit-fill-available;">
 
-    <!-- For Middle Button Code -->
-    <div style="margin-top: 30px; align-items: center; justify-content: center; width:-webkit-fill-available;"
-        class="flex">
-        <div style="width: 166px; height: 52px; display: flex; border-radius: 6px;
-         align-items: center; justify-content: center;
-        background-image: url('assets/Frame 1618868229.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat:no-repeat; ">
-            <div style="font-size: 20px; font-weight: 600; line-height: 24px; color:#FFFFFF">e-ADM</div>
+    <div class="flex" style="align-items: start; justify-content: space-between;">
+        <!-- For Middle Button Code -->
+        <div style="margin-top: 30px; align-items: center; justify-content: center; width:-webkit-fill-available;"
+            class="flex">
+            <div style="width: 166px; height: 52px; display: flex; border-radius: 6px;
+      align-items: center; justify-content: center;
+     background-image: url('assets/Frame 1618868229.png');
+     background-size: cover;
+     background-position: center;
+     background-repeat:no-repeat; ">
+                <div style="font-size: 20px; font-weight: 600; line-height: 24px; color:#FFFFFF">e-ADM</div>
+            </div>
         </div>
+
+        <!-- Profile Tab on the Top Right Code-->
+        <div *ngIf="!isTabletView" style="background-color: #FFFFFF; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px;
+        border-bottom-left-radius: 16px; width: 360px;">
+            <div class="flex gap-3" style="justify-content: center; align-items: center;">
+                <div>
+                    <img src="assets/Ellipse 393.png" width="40px" alt="">
+                </div>
+                <div class="text-left">
+                    <div class="flex gap-1" style="justify-content: start; align-items: center;">
+                      <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #000000;">6453 Harshath  Khan</div>
+                      <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #92278F;">(sm)</div>
+                    </div>
+                    <div class="text-sm 2xl:text-lg" style=" font-weight: 600; color: #92278F;">Sr Manager - DC 900</div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 
     <!-- Down Part -->
     <div style="border-radius: 6px; background-color: #FFFFFF; margin-top: 30px; margin-left: 16px; margin-right: 16px; margin-bottom: 30px;"
         class="p-4">
 
-        <div *ngIf="false" class="flex" style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
+        <div *ngIf="false" class="flex"
+            style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
             <div class="col-6"></div>
             <div class="col-6">
                 <div class="flex" style="flex-wrap: wrap-reverse;">
@@ -64,10 +86,11 @@
 
                             <!-- New Button As FileUpload -->
                             <div class="">
-                                <p-fileUpload mode="basic" name="file" [url]="uploadUrl" accept=".csv" [maxFileSize]="1000000"
-                                [auto]="true" label="Upload" chooseLabel="Upload" class="mr-2 inline-block p-button-success"
-                                (onUpload)="importResponseHandler($event)" (onError)="importErrorHandler($event)"
-                                ></p-fileUpload>
+                                <p-fileUpload mode="basic" name="file" [url]="uploadUrl" accept=".csv"
+                                    [maxFileSize]="1000000" [auto]="true" label="Upload" chooseLabel="Upload"
+                                    class="mr-2 inline-block p-button-success"
+                                    (onUpload)="importResponseHandler($event)"
+                                    (onError)="importErrorHandler($event)"></p-fileUpload>
                             </div>
                         </div>
                     </div>
@@ -92,10 +115,12 @@
                             Uploaded file validated</div>
                     </div>
                     <div class="col-4">
-                        <div class="flex gap-2" style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
+                        <div class="flex gap-2"
+                            style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
                          padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse; cursor: pointer;">
                             <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
-                            <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">Download</div>
+                            <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">
+                                Download</div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +133,8 @@
                             Error occurred</div>
                     </div>
                     <div class="col-4">
-                        <div class="flex" style="justify-content: center; align-items: center;  background-color: #F3EEED; border-radius: 4px;
+                        <div class="flex"
+                            style="justify-content: center; align-items: center;  background-color: #F3EEED; border-radius: 4px;
                          padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; cursor: pointer;">
                             <div class="" style="font-size: 16px; font-weight: 600; color: #92278F;">Check</div>
                         </div>
@@ -130,7 +156,7 @@
                     <div>
                         <div class="card" style="overflow-x: scroll;">
                             <p-table [value]="records" [paginator]="true" [rows]="10" [first]="first"
-                                [showCurrentPageReport]="true" 
+                                [showCurrentPageReport]="true"
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 (onPage)="onPageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header">
@@ -144,11 +170,13 @@
                                     <tr>
                                         <td>{{ record.date }}</td>
                                         <td>{{ record.accountNumber }}</td>
-                                        <td [ngClass]="{'approvedText': record.status == 'Approved' , 'rejectedText': record.status != 'Approved' }">{{ record.status }}</td>
+                                        <td
+                                            [ngClass]="{'approvedText': record.status == 'Approved' , 'rejectedText': record.status != 'Approved' }">
+                                            {{ record.status }}</td>
                                     </tr>
                                 </ng-template>
                                 <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows"
-                                [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />
+                                    [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />
                             </p-table>
                         </div>
                     </div>

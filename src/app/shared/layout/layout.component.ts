@@ -13,15 +13,27 @@ export class LayoutComponent {
   // isTabletView: boolean = false;
   sidebarVisible: boolean = false;
   isTabletView : boolean = false;
+
+  currentPage !: string ;
   constructor(private router : Router , private layoutS : LayoutService)
-  {
-  }
+  {}
+
   ngOnInit()
   {
     this.checkScreenSize();
     window.addEventListener('resize', () => {
       this.checkScreenSize();
     });
+
+      this.layoutS.currentPageData.subscribe(
+        (res)=>{
+          // alert(res);
+            this.currentPage=res;
+        },
+        (err)=>{
+           this.currentPage = 'home';
+        }
+      )
   }
 
   checkScreenSize() {

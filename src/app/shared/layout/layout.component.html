@@ -13,7 +13,8 @@
         </div>
         <div style="height:80px; display: flex; align-items: center;">
             <img *ngIf="isTabletView" src="assets/Group 1171276912.png" width="200px" alt="" style="margin-left: 5px;">
-            <img *ngIf="!isTabletView" src="assets/Group 1171276912.png" width="300px" alt="" style="margin-left: 50px;">
+            <img *ngIf="!isTabletView" src="assets/Group 1171276912.png" width="300px" alt=""
+                style="margin-left: 50px;">
         </div>
     </div>
 
@@ -25,22 +26,25 @@
                 <div class="">
                     <!--Home -->
                     <div class="flex gap-3" style="align-items: center; cursor: pointer;" routerLink="/home">
-                        <i class="pi pi-home text-xl" style="color: #92278F;"></i>
-                        <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Home</div>
+                        <i class="pi pi-home text-xl" [ngClass]="{ selectedTab : this.currentPage=='home' , unselectedTab : this.currentPage!='home' }" ></i>
+                        <div [ngClass]="{ selectedTab : this.currentPage=='home' , unselectedTab : this.currentPage!='home' }"
+                            style="font-size: 14px; font-weight: 700;  line-height:19.12px;">Home</div>
                     </div>
 
                     <!--Reports -->
-                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;" routerLink="/home/reports">
-                        <i class="pi pi-file text-xl" style="color: #92278F;"></i>
-                        <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Reports
+                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
+                        routerLink="/home/reports">
+                        <i class="pi pi-file text-xl" [ngClass]="{ selectedTab : this.currentPage=='reports' , unselectedTab : this.currentPage!='reports' }"></i>
+                        <div [ngClass]="{selectedTab : this.currentPage=='reports' , unselectedTab: this.currentPage!='reports' }"
+                            style="font-size: 14px; font-weight: 700; line-height:19.12px;">Reports
                         </div>
                     </div>
 
 
                     <!--Help -->
                     <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;">
-                        <i class="pi pi-question-circle text-xl" style="color: #92278F;"></i>
-                        <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Help</div>
+                        <i class="pi pi-question-circle text-xl" style="color: #6D6D6D;"></i>
+                        <div style="font-size: 14px; font-weight: 700; color: #6D6D6D; line-height:19.12px;">Help</div>
                     </div>
                 </div>
 
@@ -85,7 +89,8 @@
                 </div>
 
                 <!--Reports -->
-                <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"  (click)="navigation('reports')">
+                <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
+                    (click)="navigation('reports')">
                     <i class="pi pi-file text-xl" style="color: #92278F;"></i>
                     <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Reports
                     </div>

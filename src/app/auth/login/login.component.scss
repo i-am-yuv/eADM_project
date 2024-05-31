@@ -25,6 +25,14 @@
         font-size: 0.8rem;
         color: #92278F;
     }
+    .p-checkbox .p-checkbox-box.p-highlight {
+        border-color: #92278F;
+        background: #92278F;
+    }
+    .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
+        border-color: #92278F;
+        background: #92278F;
+    }
 }
 
 @media screen and (max-width: 1000px) {

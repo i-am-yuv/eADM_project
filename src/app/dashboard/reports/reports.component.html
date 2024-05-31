@@ -2,15 +2,33 @@
 <div style="align-items: start;  width:-webkit-fill-available;">
 
     <!-- For Middle Button Code -->
-    <div style="margin-top: 30px; align-items: center; justify-content: center; width:-webkit-fill-available;"
-        class="flex">
-        <div style="width: 166px; height: 52px; display: flex; border-radius: 6px;
+    <div class="flex" style="align-items: start; justify-content: space-between;">
+        <div style="margin-top: 30px; align-items: center; justify-content: center; width:-webkit-fill-available;"
+            class="flex">
+            <div style="width: 166px; height: 52px; display: flex; border-radius: 6px;
          align-items: center; justify-content: center;
          background-image: url('assets/Frame 1618868229.png');
         background-size: cover;
         background-position: center;
         background-repeat:no-repeat; ">
-            <div style="font-size: 20px; font-weight: 600; line-height: 24px; color:#FFFFFF">All Reports</div>
+                <div style="font-size: 20px; font-weight: 600; line-height: 24px; color:#FFFFFF">All Reports</div>
+            </div>
+        </div>
+        <!-- Profile Tab on the Top Right Code-->
+        <div *ngIf="!isTabletView" style="background-color: #FFFFFF; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px;
+        border-bottom-left-radius: 16px; width: 360px;">
+            <div class="flex gap-3" style="justify-content: center; align-items: center;">
+                <div>
+                    <img src="assets/Ellipse 393.png" width="40px" alt="">
+                </div>
+                <div class="text-left">
+                    <div class="flex gap-1" style="justify-content: start; align-items: center;">
+                      <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #000000;">6453 Harshath  Khan</div>
+                      <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #92278F;">(sm)</div>
+                    </div>
+                    <div class="text-sm 2xl:text-lg" style=" font-weight: 600; color: #92278F;">Sr Manager - DC 900</div>
+                </div>
+            </div>
         </div>
     </div>
 

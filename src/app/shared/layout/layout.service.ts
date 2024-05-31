@@ -6,16 +6,16 @@ import { Observable, Subject } from 'rxjs';
 })
 export class LayoutService {
 
-  newD !: Observable<any>;
+  currentPage !: Observable<any>;
 
-  newS = new Subject<any>();
+  currentPageData = new Subject<any>();
 
   constructor() { 
-    this.newD = this.newS.asObservable();
+    this.currentPage = this.currentPageData.asObservable();
   }
 
   getData(data :any )
   {
-       this.newS.next(data);
+       this.currentPageData.next(data);
   }
 }

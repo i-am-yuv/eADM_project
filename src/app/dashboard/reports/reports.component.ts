@@ -16,8 +16,9 @@ export class ReportsComponent {
 
   date1: Date | undefined;
   uploadUrl = '324324'; // demo URL
+  isTabletView: boolean = false;
 
-  constructor(private messageService: MessageService, private layoutS: LayoutService) { }
+  constructor(private messageService: MessageService, private layoutService: LayoutService) { }
 
   ngOnInit() {
     this.allRecords = [
@@ -72,6 +73,12 @@ export class ReportsComponent {
       { date: '18/02/23', fileName: 'File Name 1.xlsx' },
       { date: '19/02/23', fileName: 'File Name 1.xlsx' },
     ];
+    this.layoutService.getData('reports');
+
+    this.checkScreenSize();
+    window.addEventListener('resize', () => {
+      this.checkScreenSize();
+    });
   }
 
   first: number = 0;
@@ -81,5 +88,9 @@ export class ReportsComponent {
   onPageChange(event: any) {
     this.first = event.first;
     this.rows = event.rows;
+  }
+  // code for left pannel removal for less than tablet view
+  checkScreenSize() {
+    this.isTabletView = window.matchMedia('(max-width: 767px)').matches;
   }
 }

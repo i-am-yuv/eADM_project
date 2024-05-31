@@ -1,5 +1,17 @@
 :host::ng-deep {
-.p-sidebar-left {
-    width: 15rem;
+    .p-sidebar-left {
+        width: 15rem;
+    }
+    .col-10{
+        padding: 0rem !important;
+    }
 }
+
+.selectedTab {
+    color: #92278F;
 }
+
+.unselectedTab {
+    color: #6D6D6D;
+}
+
