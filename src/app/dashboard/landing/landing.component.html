@@ -130,7 +130,7 @@
                     <div>
                         <div class="card" style="overflow-x: scroll;">
                             <p-table [value]="records" [paginator]="true" [rows]="10" [first]="first"
-                                [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+                                [showCurrentPageReport]="true" 
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 (onPage)="pageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header">
