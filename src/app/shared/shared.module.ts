@@ -25,6 +25,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FileUploadModule } from 'primeng/fileupload';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FileUploadModule } from 'primeng/fileupload';
   imports :[ CommonModule, RouterModule,SidebarModule],
   exports: [
     CommonModule,
+    PaginatorModule,
     CalendarModule,
     SidebarModule,
     FormsModule,

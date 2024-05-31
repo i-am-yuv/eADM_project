@@ -13,8 +13,8 @@ export class ReportsComponent {
 
   
   allRecords!: allRecords[];
-  first = 0;
-  rows = 10;
+  // first = 0;
+  // rows = 10;
   
   date1: Date | undefined;
   uploadUrl = '324324'; // demo URL
@@ -76,28 +76,37 @@ export class ReportsComponent {
     ];
   }
 
-  next() {
-    this.first = this.first + this.rows;
-  }
+  // next() {
+  //   this.first = this.first + this.rows;
+  // }
 
-  prev() {
-    this.first = this.first - this.rows;
-  }
+  // prev() {
+  //   this.first = this.first - this.rows;
+  // }
 
-  reset() {
-    this.first = 0;
-  }
+  // reset() {
+  //   this.first = 0;
+  // }
 
-  pageChange(event: any) {
-    this.first = event.first;
-    this.rows = event.rows;
-  }
+  // pageChange(event: any) {
+  //   this.first = event.first;
+  //   this.rows = event.rows;
+  // }
 
-  isLastPage(): boolean {
-    return this.allRecords ? this.first === this.allRecords.length - this.rows : true;
-  }
+  // isLastPage(): boolean {
+  //   return this.allRecords ? this.first === this.allRecords.length - this.rows : true;
+  // }
 
-  isFirstPage(): boolean {
-    return this.allRecords ? this.first === 0 : true;
-  }
+  // isFirstPage(): boolean {
+  //   return this.allRecords ? this.first === 0 : true;
+  // }
+
+  first: number = 0;
+
+    rows: number = 10;
+
+    onPageChange(event: any) {
+        this.first = event.first;
+        this.rows = event.rows;
+    }
 }

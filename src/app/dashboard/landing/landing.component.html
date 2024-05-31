@@ -132,7 +132,7 @@
                             <p-table [value]="records" [paginator]="true" [rows]="10" [first]="first"
                                 [showCurrentPageReport]="true" 
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                                (onPage)="pageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
+                                (onPage)="onPageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header">
                                     <tr>
                                         <th>Date</th>
@@ -147,12 +147,8 @@
                                         <td [ngClass]="{'approvedText': record.status == 'Approved' , 'rejectedText': record.status != 'Approved' }">{{ record.status }}</td>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="paginatorleft">
-                                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" />
-                                </ng-template>
-                                <ng-template pTemplate="paginatorright">
-                                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text" />
-                                </ng-template>
+                                <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows"
+                                [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />
                             </p-table>
                         </div>
                     </div>

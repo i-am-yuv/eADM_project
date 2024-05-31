@@ -26,9 +26,9 @@
                 <div>
                     <div class="card" style="overflow-x: scroll;">
                         <p-table [value]="allRecords" [paginator]="true" [rows]="10" [first]="first"
-                            [showCurrentPageReport]="true" 
+                            [showCurrentPageReport]="true"
                             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                            (onPage)="pageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
+                            (onPage)="onPageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>Date</th>
@@ -40,20 +40,16 @@
                                 <tr>
                                     <td style="color: #6D6D6D;">{{ record.date }}</td>
                                     <td style="color: #6D6D6D;">{{ record.fileName }}</td>
-                                    <td >
+                                    <td>
                                         <div class="flex gap-3" style="align-items: center; justify-content: start;">
-                                         <i class="pi pi-eye" style="color: #6D6D6D; cursor: pointer;"></i>
-                                         <i class="pi pi-download" style="color: #6D6D6D; cursor: pointer;"></i>
+                                            <i class="pi pi-eye" style="color: #6D6D6D; cursor: pointer;"></i>
+                                            <i class="pi pi-download" style="color: #6D6D6D; cursor: pointer;"></i>
                                         </div>
                                     </td>
                                 </tr>
                             </ng-template>
-                            <ng-template pTemplate="paginatorleft">
-                                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" />
-                            </ng-template>
-                            <ng-template pTemplate="paginatorright">
-                                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text" />
-                            </ng-template>
+                            <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows"
+                                [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />
                         </p-table>
                     </div>
                 </div>

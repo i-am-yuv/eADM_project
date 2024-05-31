@@ -11,8 +11,8 @@ import { saveAs } from 'file-saver';
 export class LandingComponent {
 
   records!: Record[];
-  first = 0;
-  rows = 10;
+  // first = 0;
+  // rows = 10;
   
   date1: Date | undefined;
   uploadUrl = '324324'; // demo URL
@@ -74,30 +74,39 @@ export class LandingComponent {
     ];
   }
 
-  next() {
-    this.first = this.first + this.rows;
-  }
+  // next() {
+  //   this.first = this.first + this.rows;
+  // }
 
-  prev() {
-    this.first = this.first - this.rows;
-  }
+  // prev() {
+  //   this.first = this.first - this.rows;
+  // }
 
-  reset() {
-    this.first = 0;
-  }
+  // reset() {
+  //   this.first = 0;
+  // }
 
-  pageChange(event: any) {
-    this.first = event.first;
-    this.rows = event.rows;
-  }
+  // pageChange(event: any) {
+  //   this.first = event.first;
+  //   this.rows = event.rows;
+  // }
 
-  isLastPage(): boolean {
-    return this.records ? this.first === this.records.length - this.rows : true;
-  }
+  // isLastPage(): boolean {
+  //   return this.records ? this.first === this.records.length - this.rows : true;
+  // }
 
-  isFirstPage(): boolean {
-    return this.records ? this.first === 0 : true;
-  }
+  // isFirstPage(): boolean {
+  //   return this.records ? this.first === 0 : true;
+  // }
+
+  first: number = 0;
+
+    rows: number = 10;
+
+    onPageChange(event: any) {
+        this.first = event.first;
+        this.rows = event.rows;
+    }
 
   importResponseHandler(event: any) {
     this.messageService.add({
