@@ -2,13 +2,25 @@
     style="display: flex; flex-direction: column; height: 100vh; background: url('/assets/login\ background.png'); background-size: cover; background-position: center;">
 
 
-    <div class="flex align-items-center justify-content-between px-5" style="height: 100px;">
-        <div>
-            <img src="https://karnatakabank.com/sites/default/files/logo.gif" width="300px" height="55px" alt="">
+    <div class="align-items-center justify-content-between px-6" style="margin-top: 12px;">
+        <div class="flex" style="justify-content: space-between; align-items: center;">
+            <div class="col-6">
+                <img src="assets/Rectangle 10328.png" width="260px" alt="">
+            </div>
+            <div class="col-6" *ngIf="!isTabletView">
+                <div class="flex gap-8" style="justify-content: end; align-items: center;">
+                    <div style="font-size: 18px; font-weight: 500; color: #92278F; line-height: 24.59px;">HOME</div>
+                    <div style="font-size: 18px; font-weight: 500; color: #92278F; line-height: 24.59px;">SUPPORT</div>
+                    <!-- <div style=" border-radius: 8px; background-color: #92278F; padding-top: 8px;padding-bottom: 8px; padding-left: 32px; padding-right: 32px;">
+                        <div style="font-size: 18px; font-weight: 600;color: #FFFFFF;">Login</div>
+                    </div> -->
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div style="flex-grow: 1 ; flex-wrap: wrap-reverse; align-items: center;" class="flex" >
+    <div style="flex-grow: 1 ; flex-wrap: wrap-reverse; align-items: center;" class="flex">
         <!-- Left side -->
         <div *ngIf="!isTabletView" class="col-7">
             <div class="mt-1 ml-5 text-center" style="padding-top: 100px;">
