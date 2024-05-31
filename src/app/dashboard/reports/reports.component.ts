@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as saveAs from 'file-saver';
 import { MessageService } from 'primeng/api';
 import { Record, allRecords } from '../model';
+import { LayoutService } from 'src/app/shared/layout/layout.service';
 
 @Component({
   selector: 'app-reports',
@@ -18,7 +19,7 @@ export class ReportsComponent {
   date1: Date | undefined;
   uploadUrl = '324324'; // demo URL
 
-  constructor(private messageService : MessageService) { }
+  constructor(private messageService : MessageService , private layoutS : LayoutService) { }
 
   ngOnInit() {
     this.allRecords = [

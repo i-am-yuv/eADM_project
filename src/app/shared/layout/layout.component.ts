@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { LayoutService } from './layout.service';
 
 @Component({
   selector: 'app-layout',
@@ -12,10 +13,8 @@ export class LayoutComponent {
   // isTabletView: boolean = false;
   sidebarVisible: boolean = false;
   isTabletView : boolean = false;
-
-  constructor(private router : Router)
+  constructor(private router : Router , private layoutS : LayoutService)
   {
-
   }
   ngOnInit()
   {

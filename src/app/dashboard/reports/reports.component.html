@@ -15,14 +15,14 @@
     </div>
 
     <!-- Result View Table -->
-    <div class="flex" style="flex-wrap: wrap; justify-content: space-between; align-items: center;
-     margin-top: 32px; margin-bottom: 32px; margin-left: 16px; margin-right: 16px; ">
+    <div class="flex border-1 p-3" style="flex-wrap: wrap; justify-content: space-between; align-items: center;
+     margin-top: 32px; margin-bottom: 32px; margin-left: 16px; margin-right: 16px;
+     background-color: #FFFFFF; border-radius: 8px; border-width: 1px;border-color: #D1D1D1; ">
 
         <div class="col-12">
-            <div class="border-1 p-3" style="background-color: #FFFFFF; border-radius: 8px; border-width: 1px;border-color: #D1D1D1;">
+            <div class="">
                 <div style="font-size: 18px; font-weight: 400; color: #101828;" class="mb-3">E - ADM Reports</div>
                 <!-- Table Starts From here -->
-               
                 <div>
                     <div class="card" style="overflow-x: scroll;">
                         <p-table [value]="allRecords" [paginator]="true" [rows]="10" [first]="first"

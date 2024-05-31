@@ -1,51 +1,76 @@
 :host::ng-deep {
-    // .p-datatable table {
-     
-    // }
+  // .p-datatable table {
 
-    .p-button {
-        color: white;
-        border: none;
-        // background: none;
-        border: none;
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        transition: none;
-        border-radius: 3px;
-    }
-    .pi-plus:before {
-      content: none;
+  // }
+  .p-button {
+    color: white;
+    border: none;
+    background: #92278F;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: none;
+    border-radius: 3px;
+  }
+  .p-button:hover {
+    color: white;
+    border: none;
+    background: #92278F;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: none;
+    border-radius: 3px;
+  }
+  .p-fileupload-choose:not(.p-disabled):hover {
+    color: white;
+    border: none;
+    background: #92278F;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: none;
+    border-radius: 3px;
+  }
+  .p-button-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  .pi-plus:before {
+    content: none;
   }
 }
 
-.approvedText{
-   font-weight: 600;
-   color: #16A34A ;
-}
-.rejectedText{
+.approvedText {
   font-weight: 600;
-  color: #C13E30 ;
+  color: #16A34A;
+}
+
+.rejectedText {
+  font-weight: 600;
+  color: #C13E30;
 }
 
 
 
 @media screen and (max-width: 768px) {
-    .flex-item {
-      flex: 0 0 calc(100% - 10px);
-      /* Each item takes 100% width with 10px spacing on smaller screens */
-    }
-  
-    .col-8,
-    .col-4,
-    .col-6,
-    .col-7,
-    .col-5 {
-      flex: 1 0 calc(100% - 10px);
-      /* Each item takes 100% width with spacing on smaller screens */
-      margin-right: 0;
-      /* Remove right margin for col-8 */
-      margin-bottom: 10px;
-      /* Adjust bottom margin for col-4 */
-    }
+  .flex-item {
+    flex: 0 0 calc(100% - 10px);
+    /* Each item takes 100% width with 10px spacing on smaller screens */
   }
-  
+
+  .col-8,
+  .col-4,
+  .col-6,
+  .col-7,
+  .col-5 {
+    flex: 1 0 calc(100% - 10px);
+    /* Each item takes 100% width with spacing on smaller screens */
+    margin-right: 0;
+    /* Remove right margin for col-8 */
+    margin-bottom: 10px;
+    /* Adjust bottom margin for col-4 */
+  }
+}
