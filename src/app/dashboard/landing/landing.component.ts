@@ -4,6 +4,9 @@ import { MessageService } from 'primeng/api';
 import { saveAs } from 'file-saver';
 import { LayoutComponent } from 'src/app/shared/layout/layout.component';
 import { LayoutService } from 'src/app/shared/layout/layout.service';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-landing',
@@ -130,4 +133,21 @@ export class LandingComponent {
     this.isTabletView = window.matchMedia('(max-width: 767px)').matches;
   }
 
+  downloadPDF(): void {
+    const doc = new jsPDF();
+    const col = ['Date', 'Account Number', 'Status'];
+    const rows: any[] = [];
+
+    this.records.forEach(record => {
+      const temp = [record.date, record.accountNumber, record.status];
+      rows.push(temp);
+    });
+
+    autoTable(doc, {
+      head: [col],
+      body: rows,
+    });
+
+    doc.save('table.pdf');
+  }
 }
