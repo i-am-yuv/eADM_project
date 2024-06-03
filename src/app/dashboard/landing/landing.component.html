@@ -155,11 +155,11 @@
                     <div style="font-size: 16px; font-weight: 600; color: #4F4F4F;" class="mb-3">E-ADM Reports</div>
                     <!-- Table Starts From here -->
                     <div>
-                        <div class="card" style="overflow-x: scroll;">
+                        <div class="card">
                             <p-table [value]="records" [paginator]="true" [rows]="10" [first]="first"
                                 [showCurrentPageReport]="true"
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                                (onPage)="onPageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
+                                (onPage)="onPageChange($event)" [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
                                         <th>Date</th>

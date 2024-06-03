@@ -34,7 +34,7 @@ export class ReportsComponent {
       { date: '10/01/23', fileName: 'File Name 1.xlsx' },
       { date: '11/01/23', fileName: 'File Name 1.xlsx' },
       { date: '12/01/23', fileName: 'File Name 1.xlsx' },
-      { date: '13/01/23', fileName: 'File Name 1.xlsx' },
+      { date: '13/01/23', fileName: 'File Name 3.xlsx' },
       { date: '14/01/23', fileName: 'File Name 1.xlsx' },
       { date: '15/01/23', fileName: 'File Name 1.xlsx' },
       { date: '16/01/23', fileName: 'File Name 1.xlsx' },
@@ -79,15 +79,6 @@ export class ReportsComponent {
     window.addEventListener('resize', () => {
       this.checkScreenSize();
     });
-  }
-
-  first: number = 0;
-
-  rows: number = 10;
-
-  onPageChange(event: any) {
-    this.first = event.first;
-    this.rows = event.rows;
   }
   // code for left pannel removal for less than tablet view
   checkScreenSize() {
