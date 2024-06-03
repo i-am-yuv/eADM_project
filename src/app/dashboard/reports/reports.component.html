@@ -53,8 +53,8 @@
                                 <th>Action</th>
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-record>
-                            <tr>
+                        <ng-template pTemplate="body" let-record let-rowIndex="rowIndex">
+                            <tr [ngClass]="{ 'oddRow' :rowIndex % 2 === 0}" >
                                 <td style="color: #6D6D6D;">{{ record.date }}</td>
                                 <td style="color: #6D6D6D;">{{ record.fileName }}</td>
                                 <td>

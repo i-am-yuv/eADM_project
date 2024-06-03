@@ -1,7 +1,7 @@
 :host::ng-deep {
-  // .p-datatable table {
-
-  // }
+  .p-datatable .p-datatable-thead > tr > th {
+    background-color: white;
+  }
   .p-button {
     color: white;
     border: none;
@@ -51,6 +51,10 @@
 .rejectedText {
   font-weight: 600;
   color: #C13E30;
+}
+
+.oddRow{
+  background-color: #F5F1F0 !important; /* Light gray for odd rows */
 }
 
 
