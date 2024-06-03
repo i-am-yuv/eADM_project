@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Record } from '../model';
 import { MessageService } from 'primeng/api';
 import { saveAs } from 'file-saver';
@@ -108,7 +108,7 @@ export class LandingComponent {
 
   importErrorHandler(event: any) {
     //
-    var array = event.error.error.text.split(/\r?\n/);
+    var array = event.error?.error?.text.split(/\r?\n/);
     var count = array.length - 2;
     var final = count + ' Invalid  records';
     this.messageService.add({

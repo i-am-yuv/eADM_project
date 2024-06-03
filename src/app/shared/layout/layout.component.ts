@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { LayoutService } from './layout.service';
 
@@ -40,15 +40,6 @@ export class LayoutComponent {
     this.isTabletView = window.matchMedia('(max-width: 767px)').matches;
   }
 
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any) {
-  //   this.checkTabletView();
-  // }
-
-  // checkTabletView() {
-  //   this.isTabletView = window.innerWidth < 1000;
-  // }
-
   navigation( path: string)
   {
       if( path == 'home')
@@ -62,7 +53,5 @@ export class LayoutComponent {
             this.sidebarVisible = false;
           }
   }
-
-  
 
 }

@@ -26,7 +26,7 @@
                 <div class="">
                     <!--Home -->
                     <div class="flex gap-3" style="align-items: center; cursor: pointer;" routerLink="/home">
-                        <i class="pi pi-home text-xl" [ngClass]="{ selectedTab : this.currentPage=='home' , unselectedTab : this.currentPage!='home' }" ></i>
+                        <i class="pi pi-home text-xl" [ngClass]="{ selectedTab : this.currentPage==='home' , unselectedTab : this.currentPage!=='home' }" ></i>
                         <div [ngClass]="{ selectedTab : this.currentPage=='home' , unselectedTab : this.currentPage!='home' }"
                             style="font-size: 14px; font-weight: 700;  line-height:19.12px;">Home</div>
                     </div>
@@ -34,7 +34,7 @@
                     <!--Reports -->
                     <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
                         routerLink="/home/reports">
-                        <i class="pi pi-file text-xl" [ngClass]="{ selectedTab : this.currentPage=='reports' , unselectedTab : this.currentPage!='reports' }"></i>
+                        <i class="pi pi-file text-xl" [ngClass]="{ selectedTab : this.currentPage==='reports' , unselectedTab : this.currentPage!=='reports' }"></i>
                         <div [ngClass]="{selectedTab : this.currentPage=='reports' , unselectedTab: this.currentPage!='reports' }"
                             style="font-size: 14px; font-weight: 700; line-height:19.12px;">Reports
                         </div>
