@@ -1,7 +1,8 @@
 :host::ng-deep {
-  .p-datatable .p-datatable-thead > tr > th {
+  .p-datatable .p-datatable-thead>tr>th {
     background-color: white;
   }
+
   .p-button {
     color: white;
     border: none;
@@ -12,6 +13,7 @@
     transition: none;
     border-radius: 3px;
   }
+
   .p-button:hover {
     color: white;
     border: none;
@@ -22,6 +24,7 @@
     transition: none;
     border-radius: 3px;
   }
+
   .p-fileupload-choose:not(.p-disabled):hover {
     color: white;
     border: none;
@@ -32,6 +35,7 @@
     transition: none;
     border-radius: 3px;
   }
+
   .p-button-label {
     font-size: 16px;
     font-weight: 600;
@@ -53,8 +57,9 @@
   color: #C13E30;
 }
 
-.oddRow{
-  background-color: #F5F1F0 !important; /* Light gray for odd rows */
+.oddRow {
+  background-color: #F5F1F0 !important;
+  /* Light gray for odd rows */
 }
 
 
@@ -77,4 +82,24 @@
     margin-bottom: 10px;
     /* Adjust bottom margin for col-4 */
   }
+}
+
+// Make the table blurred if Failed
+.blur-container {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  /* Applies the blur effect */
+  filter: blur(5px);
+  /* Fallback for older browsers */
+  cursor: not-allowed;
+  user-select: none;
+  /* Disables text selection */
+  -webkit-user-select: none;
+  /* For Safari */
+  -moz-user-select: none;
+  /* For Firefox */
+  -ms-user-select: none;
+  /* For IE/Edge */
+
 }
