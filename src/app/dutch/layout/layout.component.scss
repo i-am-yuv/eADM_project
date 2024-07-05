@@ -1,0 +1,121 @@
+.content-wrapper {
+    background: rgb(203, 26, 16);
+    background: linear-gradient(0deg, rgba(203, 26, 16, 1) 0%, rgba(223, 89, 57, 1) 45%, rgba(255, 151, 0, 1) 100%);
+    padding: 2% 2%;
+}
+
+.content-pane {
+    min-height: 100vh;
+    //  min-width: 85%;
+    // background: #F0F1FE; // old as Neocorp
+    background: #F3F3F3; // For Neo Ledger 
+    // background: #F5F2FA; // for Neo Ledger
+    // padding: 20px;
+}
+
+:host::ng-deep {
+
+    .pi-chevron-right:before {
+        content: "\e932";
+    }
+
+    .pi-chevron-down:before {
+        content: "\e930";
+    }
+
+    .p-menubar {
+        font-family: 'Thicccboi', sans-serif;
+        border-radius: 0;
+        background-color: #3b0000;
+        width: 100%;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // top pannel
+    .p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link .p-menuitem-text {
+        color: white;
+    }
+
+    .p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link .p-menuitem-icon {
+        color: white;
+    }
+
+    // left view icon
+    ////////////////////////////////////////////////////////////////////////////
+    .small-heading {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+        color: #888888;
+        text-transform: uppercase;
+    }
+
+    .p-tieredmenu .p-menuitem {
+        margin-block: 10px;
+    }
+
+    .p-tieredmenu {
+        border: none !important;
+    }
+
+    .p-menuitem-text {
+        font-family: 'Thicccboi', sans-serif;
+        font-weight: 500;
+        margin-left: 7px;
+    }
+
+    .p-panelmenu .p-panelmenu-header>a {
+        border: none !important;
+        background: none !important;
+        font-weight: normal !important;
+        margin-block: 6px;
+        color: #3C0000;
+
+    }
+
+    .p-panelmenu .p-panelmenu-panel:hover {
+        background: #FBE8E8;
+
+
+        .p-panelmenu-header>a {
+            color: #3C0000;
+        }
+    }
+
+    .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link:hover {
+        background: #f5f5f5;
+
+        .p-menuitem-text {
+            color: #3C0000;
+        }
+    }
+
+    // .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link:hover {
+    //     background: #3b0000;
+    //     color: #ffffff;
+
+    //     .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+    //         color: #fff ;
+    // }
+    //     }
+    //     .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text>a:hover {
+    //     color: #fff;
+    // }
+
+    .p-panelmenu-content {
+        border: none !important;
+        background: #f1f1f1;
+        // border-radius: 12px;
+    }
+
+    .p-panelmenu .p-panelmenu-panel .p-panelmenu-content {
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        background-color: #f1f1f1;
+        // margin-left: 18px;
+        // margin-right:18px;
+    }
+
+    .p-menubar-start {
+        width: 100%;
+    }
+}

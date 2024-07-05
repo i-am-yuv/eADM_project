@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiurl: 'https://api.ifyn.com/neoledger/api',
+    apiurl: 'http://localhost:1127/eadm/api',
   };
   
   /*

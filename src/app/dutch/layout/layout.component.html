@@ -1,0 +1,48 @@
+<!-- New Left Menu Design -->
+<div class="w-full">
+  <p-menubar styleClass="p-0 top-menu">
+    <ng-template pTemplate="start" style="justify-content: center; align-items: center; width: 100%;">
+      <div class="cursor-pointer" style=" display: flex; justify-content: space-between; align-items: center;">
+        <!-- <img src="assets/neologo.png" width="150" class="m-4" routerLink="/dashboard" /> -->
+        <img src="assets/NeoLedgerWhiteLogo.png" width="150" class="m-2" routerLink="/dashboard" />
+        <div *ngIf="isMobile">
+          <i class="pi pi-align-justify text-white text-left w-full ml-3" (click)="openMobileSlidebar1()"></i>
+
+        </div>
+
+        <div *ngIf="isMobile" class="mr-3" style="display: flex; align-items: center;">
+          <i class="pi pi-cog ml-5 text-white" (click)="openMobileSlidebar2()"></i>
+        </div>
+      </div>
+
+    </ng-template>
+    <ng-template pTemplate="end" class="w-full px-0">
+      <div *ngIf="!isMobile">
+        <p-menubar [style]="{ border: 'none' } " [model]="userMenuItems" class="usermenu"></p-menubar>
+      </div>
+    </ng-template>
+  </p-menubar>
+</div>
+
+<div style="display: flex; justify-content: space-between; width: 100%;">
+  <div *ngIf="!isMobile" class="card col-2 px-0 justify-content-center border-right-1 border-200 ">
+    <div class="mx-2">
+      <p-panelMenu [model]="items"></p-panelMenu>
+    </div>
+  </div>
+  <div [ngClass]="{ 'content-pane col-12':isMobile , 'content-pane col-10' : !isMobile}"
+    style="padding: 0px !important;">
+    <p-toast></p-toast>
+    <router-outlet></router-outlet>
+    <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+  </div>
+</div>
+
+<!-- for mobile responsiveLayout  -->
+<p-sidebar position="left" [(visible)]="isVisibleSlideBar1" header="Options" [modal]="true" styleClass="p-sidebar-sm">
+  <p-panelMenu [model]="items"></p-panelMenu>
+</p-sidebar>
+
+<p-sidebar position="right" [(visible)]="isVisibleSlideBar2" header="Options" [modal]="true" styleClass="p-sidebar-sm">
+  <p-panelMenu [model]="userMenuItems"></p-panelMenu>
+</p-sidebar>

@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,11 @@ export class LoginComponent {
 
   submitted: boolean = false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private messageService: MessageService) { }
+  constructor(private loginService:LoginService,private router: Router, private formBuilder: FormBuilder, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.minLength(5)])
     })
 
@@ -35,16 +36,65 @@ export class LoginComponent {
   }
 
   onClickLogin() {
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Login Successfully',
-      life: 2000,
-    });
-    setTimeout(() => {
-      this.router.navigate(['/home']);
-    }, 2000);
 
+
+    this.submitted = true;
+    // this.router.navigate(['/dashboard']);
+    // alert(JSON.stringify(this.loginForm.value));
+    this.loginService.doLogin(this.loginForm.value).then((res:any) => {
+      if (res) {
+        sessionStorage.setItem('token', res.jwt);
+        sessionStorage.setItem('refreshToken', res.refreshToken);
+
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 2000);
+    
+      }
+      else {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Login Error',
+          detail: 'Invalid Login, please check credentials',
+          life: 3000,
+        });
+        this.submitted = false;
+      }
+    })
+      .catch((err:any) => {
+        if (err.status === 0) {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Login Error',
+            detail: 'Check Server Connection',
+            life: 3000,
+          });
+        }
+        else if (err.code === 404) {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Login Error',
+            detail: 'Check Server Connection',
+            life: 3000,
+          });
+        }
+        else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Login Error',
+            detail: err.error.message,
+            life: 3000,
+          });
+
+          if (err.error.message.includes('User is Inactive')) {
+            // this.showOtpFlag = true;
+            // this.verifyOtpMobile = this.loginForm.controls['username'].value;
+          }
+        }
+        this.submitted = false;
+      });
+   
+    
   }
 
   // code for left pannel removal for less than tablet view

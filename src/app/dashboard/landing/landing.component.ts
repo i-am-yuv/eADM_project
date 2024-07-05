@@ -7,6 +7,7 @@ import { LayoutService } from 'src/app/shared/layout/layout.service';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import autoTable from 'jspdf-autotable';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-landing',
@@ -18,7 +19,7 @@ export class LandingComponent {
   records!: Record[];
 
   date1: Date | undefined;
-  uploadUrl = '324324'; // demo URL
+  uploadUrl = environment.apiurl+'/account/validate'; // demo URL
   isTabletView: boolean = false;
 
 
