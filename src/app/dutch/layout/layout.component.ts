@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { AuthService } from 'src/app/auth/auth.service';
-import { LedgerTypeComponent } from 'src/app/masters/ledger-type/ledger-type.component';
-import { LedgerComponent } from 'src/app/masters/ledger/ledger.component';
 
 @Component({
   selector: 'app-layout',

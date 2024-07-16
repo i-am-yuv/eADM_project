@@ -11,4 +11,6 @@ export interface allRecords {
 
     date: string;
     fileName: string; 
+    noOfRecords?:any;
+    status?:any;
 }

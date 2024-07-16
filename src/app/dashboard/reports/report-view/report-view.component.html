@@ -1,0 +1,109 @@
+<p-toast></p-toast>
+<div style="align-items: start;  width:-webkit-fill-available;">
+
+    <!-- Result View Table -->
+    <div class="flex border-1 p-3" style="flex-wrap: wrap; justify-content: space-between; align-items: center;
+     margin-top: 32px; margin-bottom: 32px; margin-left: 16px; margin-right: 16px;
+     background-color: #92278F; border-radius: 8px; border-width: 1px;border-color: #D1D1D1; ">
+
+        <div class="col-12">
+            <div class="flex align-items-center justify-content-between gap-8 p-2"
+                style="font-weight: 700;font-size: 20px;align-items: center;color: #FFFFFF;">
+                <div style="font-size: 20px; font-weight: 700; " class="mb-3">Date: {{"21/05/2024"}}</div>
+                <div style="font-size: 20px; font-weight: 700; " class="mb-3">File Name: {{"FileName1.xlsx"}}</div>
+                <div style="font-size: 20px; font-weight: 700; " class="mb-3">No Of Records : {{"100"}}</div>
+                <div style="font-size: 20px; font-weight: 700; " class="mb-3">Status: {{"Success"}}</div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div style="align-items: start;  width:-webkit-fill-available;">
+
+    <!-- Result View Table -->
+    <div class="flex border-1 p-3" style="flex-wrap: wrap; justify-content: space-between; align-items: center;
+     margin-top: 32px; margin-bottom: 32px; margin-left: 16px; margin-right: 16px;
+     background-color: #FFFFFF; border-radius: 8px; border-width: 1px;border-color: #D1D1D1; ">
+
+        <div class="col-12">
+            <div class="">
+                <div style="font-size: 18px; font-weight: 400; color: #101828;border-radius: 9px;" class="flex w-full mb-3">
+                    <span class="p-input-icon-left" >
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" class="" style="background: #FFFFFF;width: 532px;border: 1px solid #101828;"
+                             (input)="applyFilterGlobal($event, 'contains')" placeholder="Search..." />
+                    </span>
+                  </div>
+                <div>
+                    <p-table [value]="customers" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]"
+                        [scrollable]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Customer Name
+                                </th>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Account Number
+                                </th>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">EMI Amount</th>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Transaction ID
+                                </th>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Status</th>
+
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Reason</th>
+                                
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-record let-rowIndex="rowIndex">
+                            <tr [ngClass]="{ 'oddRow':rowIndex % 2 === 0}">
+                                <td style="color: #6D6D6D;">
+                                    
+                                    <div class="flex justify-content-start align-items-center gap-2" >
+                                        <div style="width: 40px;height: 40px; background-color:#F4EBFF;color: #000000;border-radius: 20px;"
+                                          class="flex justify-content-center align-items-center ">{{record.customerName!=null?record.customerName.charAt(0):'A'}}</div>
+                                        <div style="font-size: 14px;color: #000000;">{{record.customerName!=null?record.customerName:'NA'}}</div>
+                                      </div>
+                                    
+                                   </td>
+                                <td style="color: #6D6D6D;">{{ record.accountNumber }}</td>
+                                <td style="color: #6D6D6D;">{{ record.emiAmount }}</td>
+                                <td style="color: #6D6D6D;">{{ record.transactionId }}</td>
+                                
+                               
+                                <td *ngIf="record.status=='failure'"
+                                    class="flex align-items-center justify-content-start">
+                                    <div class=" flex align-items-center justify-content-center p-1 mb-1"
+                                        style="font-size: 14px;font-weight:400; color:#DC2626;background-color: #FECACA;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #DC2626;">
+
+                                        {{ record.status }}
+                                    </div>
+                                </td>
+                                <td *ngIf="record.status=='success'"
+                                    class="flex align-items-center justify-content-start">
+                                    <div class=" flex align-items-center justify-content-center p-1 mb-1"
+                                        style="font-size: 14px;font-weight:400; color:#16A34A;background-color: #BBF7D0;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #16A34A;">
+
+                                        {{ record.status }}
+                                    </div>
+                                </td>
+                                <td style="color: #6D6D6D;">
+                                    
+                                    <div class="flex gap-3">
+                                        <div> {{ record.reason }}</div>
+                                            <div *ngIf="record.reason.length>0" class="" style="align-items: center; justify-content: start;">
+                                                <i class="pi pi-download" style="color: #6D6D6D; cursor: pointer;"></i>
+                                            </div>
+                                        
+                                    </div>
+                                   </td>
+                              
+                                
+                            </tr>
+                        </ng-template>
+                    </p-table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

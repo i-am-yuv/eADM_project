@@ -26,19 +26,37 @@
                 <div class="">
                     <!--Home -->
                     <div class="flex gap-3" style="align-items: center; cursor: pointer;" routerLink="/home">
-                        <i class="pi pi-home text-xl" [ngClass]="{ selectedTab : this.currentPage==='home' , unselectedTab : this.currentPage!=='home' }" ></i>
+                        <i class="pi pi-home text-xl"
+                            [ngClass]="{ selectedTab : this.currentPage==='home' , unselectedTab : this.currentPage!=='home' }"></i>
                         <div [ngClass]="{ selectedTab : this.currentPage=='home' , unselectedTab : this.currentPage!='home' }"
                             style="font-size: 14px; font-weight: 700;  line-height:19.12px;">Home</div>
                     </div>
-
+                    <!--Users -->
+                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
+                        routerLink="/home/user">
+                        <img src="assets/user_icon.png" style="width: 24px;height: 24px;">
+                        <div [ngClass]="{selectedTab : this.currentPage=='users' , unselectedTab: this.currentPage!='users' }"
+                            style="font-size: 14px; font-weight: 700; line-height:19.12px;">User
+                        </div>
+                    </div>
                     <!--Reports -->
                     <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
                         routerLink="/home/reports">
-                        <i class="pi pi-file text-xl" [ngClass]="{ selectedTab : this.currentPage==='reports' , unselectedTab : this.currentPage!=='reports' }"></i>
+                        <i class="pi pi-file text-xl"
+                            [ngClass]="{ selectedTab : this.currentPage==='reports' , unselectedTab : this.currentPage!=='reports' }"></i>
                         <div [ngClass]="{selectedTab : this.currentPage=='reports' , unselectedTab: this.currentPage!='reports' }"
                             style="font-size: 14px; font-weight: 700; line-height:19.12px;">Reports
                         </div>
                     </div>
+                    <!--Consent Master -->
+                    <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
+                        routerLink="/home/consent">
+                        <img src="assets/consent_master-icon.png" style="width: 22.04px;height: 15.81px;">
+                        <div [ngClass]="{selectedTab : this.currentPage=='reports' , unselectedTab: this.currentPage!='reports' }"
+                            style="font-size: 14px; font-weight: 700; line-height:19.12px;">Consent Master
+                        </div>
+                    </div>
+
 
 
                     <!--Help -->
@@ -87,6 +105,13 @@
                     <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Home
                     </div>
                 </div>
+                <!--Users-->
+                <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
+                    (click)="navigation('user')">
+                    <img src="assets/user_icon.png" style="width: 24px;height: 24px;">
+                    <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">User
+                    </div>
+                </div>
 
                 <!--Reports -->
                 <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
@@ -95,7 +120,13 @@
                     <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Reports
                     </div>
                 </div>
-
+                <!--Consent Master -->
+                <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;"
+                    (click)="navigation('consent')">
+                    <img src="assets/consent_master-icon.png" style="width: 22.04px;height: 15.81px;">
+                    <div style="font-size: 14px; font-weight: 700; color: #92278F; line-height:19.12px;">Consent Master
+                    </div>
+                </div>
 
                 <!--Help -->
                 <div class="flex gap-3" style="align-items: center; padding-top: 24px; cursor: pointer;">

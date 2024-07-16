@@ -9,8 +9,17 @@
             </div>
             <div class="col-6" *ngIf="!isTabletView">
                 <div class="flex gap-8" style="justify-content: end; align-items: center;">
-                    <div style="font-size: 18px; font-weight: 500; color: #92278F; line-height: 24.59px;">HOME</div>
-                    <div style="font-size: 18px; font-weight: 500; color: #92278F; line-height: 24.59px;">SUPPORT</div>
+                    <div class="flex align-items-center justify-content-center gap-2"
+                        style="border-radius: 40px;background-color: #92278F;padding: 6px 19px">
+                        <div class=""
+                            style="width: 63px;height: 19px;color: #FFFFFF;font-weight: 400;font-size: 14px;text-align: center;font-family: Manrope;">
+                            SUPPORT</div>
+                        <div class="">
+                            <img src="assets/support_icon_i.png" style="margin-top: 4px;" width="28" height="28">
+
+                        </div>
+
+                    </div>
                     <!-- <div style=" border-radius: 8px; background-color: #92278F; padding-top: 8px;padding-bottom: 8px; padding-left: 32px; padding-right: 32px;">
                         <div style="font-size: 18px; font-weight: 600;color: #FFFFFF;">Login</div>
                     </div> -->
@@ -57,12 +66,35 @@
                         </div>
 
                     </div>
+                    <div class="flex flex-column gap-1" class="mb-2 mt-3">
+                        <div class="flex align-items-center justify-content-start gap-4">
+                            <div style="background-color: #E3E3E3;font-size: 20px;width: 141px;height: 51px;">
+                                <div class="" style="text-align: center;padding-top: 10px;font-weight: 900;" id="captchaText">{{captchaText}}</div>
+                            </div>
+                            <div style="border-radius: 8px;font-weight: 900;">
+                                <img src="assets/captcha-icon.png" (click)="generateCaptcha()">
+                            </div>
 
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-column gap-2" class="mb-2 mt-3">
+                        <div class="flex align-items-center bg-white p-1 border-round-lg shadow-2"
+                            style="margin-top: 12px;">
+                            <input pInputText type="text" class="form-control inputfield w-full" name="captcha"
+                                formControlName="captcha" style="border: none; height: 40px;"
+                                placeholder="Enter Captcha"
+                                style="border: none; height: 56px; font-size: 16px; font-weight: 400; border-radius: 15px; border-color: #E3E3E3; color: black;"
+                                 />
+                        </div>
+
+                    </div>
                     <div class="flex align-items-center justify-content-between mb-4" style="margin-top: 32px;">
                         <div class="flex align-items-center">
-                            <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                            <label for="rememberme1" class=""
-                                style=" font-size: 14px; font-weight: 500; color:#6D6D6D;">Remember Password</label>
+                            <!--<p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                             <label for="rememberme1" class=""
+                                style=" font-size: 14px; font-weight: 500; color:#6D6D6D;">Remember Password</label> -->
                         </div>
                         <a class="font-medium no-underline ml-2 text-right"
                             style="color: #92278F; font-size: 14px; font-weight: 600;">Forgot

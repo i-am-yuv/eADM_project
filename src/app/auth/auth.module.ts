@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MessageService } from 'primeng/api';
-
+import { CaptchaModule } from 'primeng/captcha';
 @NgModule({
   declarations: [
     LoginComponent
@@ -17,6 +17,7 @@ import { MessageService } from 'primeng/api';
     AuthRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    CaptchaModule,
     FormsModule,
     CheckboxModule
   ]

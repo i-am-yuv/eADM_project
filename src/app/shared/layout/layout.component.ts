@@ -47,9 +47,17 @@ export class LayoutComponent {
            this.router.navigate(['/home']);
            this.sidebarVisible = false;
         }
-        else if(path = 'reports')
+        else if(path == 'reports')
           {
             this.router.navigate(['/home/reports']);
+            this.sidebarVisible = false;
+          }
+          else if(path=='consent'){
+            this.router.navigate(['/home/consent']);
+            this.sidebarVisible = false;
+          }
+          else if(path=='user'){
+            this.router.navigate(['/home/user']);
             this.sidebarVisible = false;
           }
   }

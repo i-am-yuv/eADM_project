@@ -14,7 +14,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   passwordVisible = false;
   isTabletView: boolean = false;
-
+  captchaText:string="CAPTCHA";
   submitted: boolean = false;
 
   constructor(private loginService:LoginService,private router: Router, private formBuilder: FormBuilder, private messageService: MessageService) { }
@@ -22,7 +22,8 @@ export class LoginComponent {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.minLength(5)])
+      password: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.minLength(5)]),
+      captcha:new FormControl('', []),
     })
 
     this.checkScreenSize();
@@ -35,8 +36,31 @@ export class LoginComponent {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  onClickLogin() {
+  generateCaptcha(){
+    let uniquechar = "";
 
+    const randomchar =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    // Generate captcha for length of
+    // 5 with random character
+    for (let i = 1; i < 6; i++) {
+        uniquechar += randomchar.charAt(
+            Math.random() * randomchar.length)
+    }
+    this.captchaText=uniquechar;
+  }
+  onClickLogin() {
+    var captcha=this.loginForm.get('captcha')?.value;
+    if(captcha!=this.captchaText){
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Login Error',
+        detail: 'Invalid Captcha',
+        life: 3000,
+      });
+      return ;
+    }
 
     this.submitted = true;
     // this.router.navigate(['/dashboard']);
