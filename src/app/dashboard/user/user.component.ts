@@ -69,7 +69,7 @@ export class UserComponent {
     
     
   
-    this.layoutService.getData('reports');
+    //this.layoutService.getData('reports');
 
     this.checkScreenSize();
     window.addEventListener('resize', () => {
@@ -98,6 +98,6 @@ export class UserComponent {
     }
   }
   editUser(user:User){
-    
+
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class LayoutService {
 
   currentPage !: Observable<any>;
 
-  currentPageData = new Subject<any>();
+  currentPageData: BehaviorSubject<any>= new BehaviorSubject<any>(undefined);
 
   constructor() { 
     this.currentPage = this.currentPageData.asObservable();
