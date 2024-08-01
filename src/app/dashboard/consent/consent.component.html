@@ -41,46 +41,54 @@
 
         <div class="col-12">
             <div class="">
-                <div style="font-size: 18px; font-weight: 400; color: #101828;border-radius: 9px;" class="flex w-full mb-3">
-                    <span class="p-input-icon-left" >
-                      <i class="pi pi-search"></i>
-                      <input pInputText type="text" class="" style="background: #FFFFFF;width: 532px;border: 1px solid #101828;"
-                             (input)="applyFilterGlobal($event, 'contains')" placeholder="Search..." />
+                <div style="font-size: 18px; font-weight: 400; color: #101828;border-radius: 9px;"
+                    class="flex w-full mb-3">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" class=""
+                            style="background: #FFFFFF;width: 532px;border: 1px solid #101828;"
+                            (input)="applyFilterGlobal($event, 'contains')" placeholder="Search..." />
                     </span>
-                  </div>
-                  
+                </div>
+
                 <!-- Table Starts From here -->
-                <div > 
-                    <p-table [value]="customers" [paginator]="true" [rows]="10"  
-                        [rowsPerPageOptions]="[10, 20, 50]" [scrollable]="true">
+                <div>
+                    <p-table #dt [value]="customers" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]"
+                        [scrollable]="true"
+                        [globalFilterFields]="['customerName','accountNumber','emiAmount','transactionId','status']">
                         <ng-template pTemplate="header">
-                            <tr >
-                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Customer Name</th>
-                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> Account Number</th>
+                            <tr>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Customer Name
+                                </th>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> Account Number
+                                </th>
                                 <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Phone Number</th>
-                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Consent Ref ID</th>
+                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Consent Ref ID
+                                </th>
                                 <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> Status</th>
                                 <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> Reason</th>
-                            
+
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-record let-rowIndex="rowIndex">
                             <tr [ngClass]="{ 'oddRow':rowIndex % 2 === 0}">
                                 <td style="color: #6D6D6D;">
-                                    
-                                    <div class="flex justify-content-start align-items-center gap-2" >
+
+                                    <div class="flex justify-content-start align-items-center gap-2">
                                         <div style="width: 40px;height: 40px; background-color:#F4EBFF;color: #000000;border-radius: 20px;"
-                                          class="flex justify-content-center align-items-center ">{{record.customerName!=null?record.customerName.charAt(0):'A'}}</div>
-                                        <div style="font-size: 14px;color: #000000;">{{record.customerName!=null?record.customerName:'NA'}}</div>
-                                      </div>
-                                    
-                                   </td>
+                                            class="flex justify-content-center align-items-center ">
+                                            {{record.customerName!=null?record.customerName.charAt(0):'A'}}</div>
+                                        <div style="font-size: 14px;color: #000000;">
+                                            {{record.customerName!=null?record.customerName:'NA'}}</div>
+                                    </div>
+
+                                </td>
                                 <td style="color: #6D6D6D;">{{ record.accountNumber }}</td>
                                 <td style="color: #6D6D6D;">{{ record.emiAmount }}</td>
                                 <td style="color: #6D6D6D;">{{ record.transactionId }}</td>
-                                
-                               
-                                <td *ngIf="record.status=='failure'"
+
+
+                                <td *ngIf="record.status=='Failure'"
                                     class="flex align-items-center justify-content-start">
                                     <div class=" flex align-items-center justify-content-center p-1 mb-1"
                                         style="font-size: 14px;font-weight:400; color:#DC2626;background-color: #FECACA;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #DC2626;">
@@ -88,7 +96,7 @@
                                         {{ record.status }}
                                     </div>
                                 </td>
-                                <td *ngIf="record.status=='success'"
+                                <td *ngIf="record.status=='Success'"
                                     class="flex align-items-center justify-content-start">
                                     <div class=" flex align-items-center justify-content-center p-1 mb-1"
                                         style="font-size: 14px;font-weight:400; color:#16A34A;background-color: #BBF7D0;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #16A34A;">
@@ -97,17 +105,18 @@
                                     </div>
                                 </td>
                                 <td style="color: #6D6D6D;">
-                                    
+
                                     <div class="flex gap-3">
                                         <div> {{ record.reason }}</div>
-                                            <div *ngIf="record.reason.length>0" class="" style="align-items: center; justify-content: start;">
-                                                <i class="pi pi-download" style="color: #6D6D6D; cursor: pointer;"></i>
-                                            </div>
-                                        
+                                        <div *ngIf="record.reason.length>0" class=""
+                                            style="align-items: center; justify-content: start;">
+                                            <i class="pi pi-download" style="color: #6D6D6D; cursor: pointer;"></i>
+                                        </div>
+
                                     </div>
-                                   </td>
-                              
-                                
+                                </td>
+
+
                             </tr>
                         </ng-template>
                     </p-table>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LandingComponent } from './landing/landing.component';
@@ -8,6 +8,8 @@ import { ReportsComponent } from './reports/reports.component';
 import { ReportViewComponent } from './reports/report-view/report-view.component';
 import { ConsentComponent } from './consent/consent.component';
 import { UserComponent } from './user/user.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { UserComponent } from './user/user.component';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+    ConfirmDialogModule,
+    InputSwitchModule
+  ],providers: [ DatePipe ], 
 })
 export class DashboardModule { }

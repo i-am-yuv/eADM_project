@@ -54,7 +54,8 @@
 
                     </div>
 
-                    <div style="font-size: 18px; font-weight: 400; color: #101828;border-radius: 9px;" >
+                    <div style="font-size: 18px; font-weight: 400; color: #101828;border-radius: 9px;cursor: pointer;"
+                        (click)="openNew()">
                         <img src="assets/button_icon.png"
                             style="margin-right:224px;width: 87px;height: 40px;border: 1px solid #92278F;border-radius: 8px;">
 
@@ -63,57 +64,56 @@
 
                 <!-- Table Starts From here -->
                 <div>
-                    <p-table [value]="users" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]"
-                        [scrollable]="true">
-                        <ng-template pTemplate="header">
+                    <p-table #dt [value]="users" [rows]="10" [paginator]="true" [totalRecords]="totalRecords"
+                        [rowsPerPageOptions]="[10, 25, 50]" [lazy]="true" (onLazyLoad)="loadPage($event)"
+                        [scrollable]="true" [globalFilterFields]="['userName','email','mobileNumber','status','role']">
+                        <ng-template pTemplate="header" >
                             <tr>
-                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">User Name</th>
-                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> Phone Number
+                                <th class="flex justify-content-start" style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">User Name</th>
+                                <th class="flex justify-content-start" style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> Phone Number
                                 </th>
-                                <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Role</th>
+                                <th class="flex justify-content-start" style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Role</th>
                                 <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Status</th>
                                 <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> Action</th>
 
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-record let-rowIndex="rowIndex">
-                            <tr [ngClass]="{ 'oddRow':rowIndex % 2 === 0}">
-                                <td style="color: #6D6D6D;">
+                        <ng-template pTemplate="body" let-user let-rowIndex="rowIndex" >
+                            <tr [ngClass]="{ 'oddRow':rowIndex % 2 === 0}" >
+                                <td  style="color: hsl(0, 0%, 43%);" >
 
                                     <div class="flex justify-content-start align-items-center gap-2">
                                         <div style="width: 40px;height: 40px; background-color:#F4EBFF;color: #000000;border-radius: 20px;"
                                             class="flex justify-content-center align-items-center ">
-                                            {{record.userName!=null?record.userName.charAt(0):'A'}}</div>
+                                            {{user.userName!=null?user.userName.charAt(0):'A'}}</div>
                                         <div style="font-size: 14px;color: #000000;">
-                                            {{record.userName!=null?record.userName:'NA'}}</div>
+                                            {{user.userName!=null?user.userName:'NA'}}</div>
                                     </div>
 
                                 </td>
-                                <td style="color: #6D6D6D;">{{ record.phoneNumber }}</td>
-                                <td style="color: #6D6D6D;">{{ record.role }}</td>
+                                <td  style="color: #6D6D6D;" >{{ user.mobileNumber }}</td>
+                                <td  style="color: #6D6D6D;">{{ user.role.name }}</td>
 
 
-                                <td *ngIf="record.status=='inactive'"
-                                    class="flex align-items-center justify-content-start">
+                                <td  *ngIf="user.status=='InActive'"
+                                    class="flex align-items-center justify-content-between">
                                     <div class=" flex align-items-center justify-content-center p-1 mb-1"
                                         style="font-size: 14px;font-weight:400; color:#344054;background-color: #BCBCBC;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #BCBCBC;">
 
-                                        {{ record.status }}
+                                        {{ user.status }}
                                     </div>
                                 </td>
-                                <td *ngIf="record.status=='active'"
-                                    class="flex align-items-center justify-content-start">
+                                <td  *ngIf="user.status=='Active'" class="flex align-items-center justify-content-between">
                                     <div class=" flex align-items-center justify-content-center p-1 mb-1"
                                         style="font-size: 14px;font-weight:400; color:#FFFFFF;background-color: #22C55E;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #16A34A;">
 
-                                        {{ record.status }}
+                                        {{ user.status }}
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="flex gap-3" style="align-items: center; justify-content: start;">
+                                <td >
+                                    <div class="flex" style="align-items: center; justify-content: start;">
                                         <img src="assets/edit_icon.png"
-                                            style="width: 20px;height: 20px;cursor: pointer;"
-                                            (click)="editUser(record)">
+                                            style="width: 20px;height: 20px;cursor: pointer;" (click)="editUser(user)">
                                     </div>
                                 </td>
 
@@ -127,3 +127,140 @@
     </div>
 
 </div>
+<p-dialog [(visible)]="userDialog" [style]="{width: '466px',height:'750px'}"  [modal]="true"
+    styleClass="p-fluid custom-dialog">
+    <ng-template pTemplate="content">
+
+        <div class="flex flex-column mx-4">
+
+            <div class="text-left"
+                style="color: #92278F;margin-top: 2px;font-size: 24px;font-family: Manrope;font-weight: 700;">
+                Add User Details
+            </div>
+            <!-- Name -->
+            <div style="color: #000000;margin-top: 26px;" class="">
+                <div style="font-size: 16px;font-weight: 500;color: #000000;">
+                    Name
+                </div>
+                <!-- <div class="field"> -->
+                <div class="w-full flex align-items-center justify-content-start border-round-lg px-1 py-1 gap-2"
+                    style="border: 1px solid #DFE4EA;">
+                    <img src="assets/username.png" alt="">
+
+                    <input pInputText type="text" class="form-control inputfield w-full" name="userName"
+                        #userName="ngModel" [(ngModel)]="user.userName" style="border: none;" placeholder="Enter Name"
+                        required />
+                </div>
+                <!-- <error-message [controlName]="userName"></error-message> -->
+                <!-- </div> -->
+
+
+            </div>
+
+            <!-- Email -->
+            <div style="color: #000000;margin-top: 26px;">
+                <div style="font-size: 16px;font-weight: 500;color: #000000;">
+                    Email
+                </div>
+                <!-- <div class="field"> -->
+                <div class="w-full flex align-items-center justify-content-start border-round-lg px-1 py-1 gap-2"
+                    style="border: 1px solid #DFE4EA;">
+                    <img src="assets/email_icon.png" alt="">
+
+                    <input pInputText type="text" name="email" #email="ngModel" [(ngModel)]="user.email"
+                        class="form-control inputfield w-full" style="border: none;" placeholder="Enter Mail ID"
+                       />
+                </div>
+                <!-- <error-message [controlName]="hasUserForm.controls['mobile']"></error-message> -->
+                <!-- </div> -->
+
+
+            </div>
+
+
+            <!-- Phone Number -->
+            <div style="color: #000000;margin-top: 26px;">
+                <div style="font-size: 16px;font-weight: 500;color: #000000;">
+                    Phone Number
+                </div>
+                <!-- <div class="field"> -->
+                <div class="w-full flex align-items-center justify-content-start border-round-lg px-1 py-1 gap-2"
+                    style="border: 1px solid #DFE4EA;">
+                    <img src="assets/phone_icon.png" alt="">
+
+                    <input pInputText type="text" name="mobileNumber" #mobileNumber="ngModel"
+                        [(ngModel)]="user.mobileNumber" class="form-control inputfield w-full" style="border: none;" minlength="10" maxlength="10"
+                        placeholder="Enter Phone Number"  />
+                </div>
+                <!-- <error-message [controlName]="hasUserForm.controls['mobile']"></error-message> -->
+                <!-- </div> -->
+
+
+            </div>
+
+            <!-- Status -->
+            <div style="color: #000000;margin-top: 26px;">
+                <div style="font-size: 16px;font-weight: 500;color: #000000;">
+                    Status
+                </div>
+                <!-- <div class="field"> -->
+                <div class="w-full flex align-items-center justify-content-start border-round-lg px-1 py-1 gap-2"
+                    style="border: 1px solid #DFE4EA;">
+                    <input pInputText type="text" name="status" class="form-control inputfield w-full"
+                        style="border: none;" value="Active" *ngIf="user.status" />
+                    <input pInputText type="text" name="status" class="form-control inputfield w-full"
+                        style="border: none; color: #92278F;" value="Inactive" *ngIf="!user.status" />
+
+                    <!-- <input pInputText type="text" name="status" #status="ngModel" [(ngModel)]="user.status" class="form-control inputfield w-full"
+                        style="border: none;" value="Active" *ngIf="user.status"/>
+                        <input pInputText type="text" name="status" #status="ngModel" [(ngModel)]="user.status" class="form-control inputfield w-full"
+                        style="border: none;color: #92278F;" value="InActive" *ngIf="!user.status" /> -->
+                    <p-inputSwitch [(ngModel)]="user.status" (onChange)="changeValue($event)"></p-inputSwitch>
+
+                </div>
+                <!-- <error-message [controlName]="hasUserForm.controls['mobile']"></error-message> -->
+                <!-- </div> -->
+
+
+            </div>
+
+            <!-- Role -->
+            <div style="color: #000000;margin-top: 26px;">
+                <div style="font-size: 16px;font-weight: 500;color: #000000;">
+                    Role
+                </div>
+                <!-- <div class="field"> -->
+                <div class="w-full flex align-items-center justify-content-start border-round-lg px-1 py-1 gap-2"
+                    style="border: 1px solid #DFE4EA;">
+                    <!-- <input pInputText type="text" name="role" #role="ngModel" [(ngModel)]="user.role" class="form-control inputfield w-full"
+                        style="border: none;" placeholder="Select" /> -->
+
+                    <p-dropdown id="role" [options]="roles" [(ngModel)]="user.role" optionLabel="name" 
+                        [style]="{'minWidth':'100%'}" class="w-full" appendTo="body" placeholder="Select"
+                        >
+                    </p-dropdown>
+
+                </div>
+                <!-- <error-message [controlName]="user?.role.value"></error-message> -->
+                <!-- </div> -->
+
+
+            </div>
+
+            <!-- Button -->
+            <div style="color: #000000;margin-top: 26px;" class="flex justify-content-between gap-2">
+                <button pButton pRipple type="submit" label="Discard" class="p-button-help w-full" style="background-color: #F5F1F0; height: 46px; border-radius: 6px;border-color:1px #F5F1F0; gap: 10px;
+                font-size: 16px; font-weight: 400;color: #92278F;" (click)="cancelUser()">
+                    <!-- <i *ngIf="submitted" class="pi pi-spin pi-spinner" style="font-size: 2rem"></i> -->
+                </button>
+                <button pButton pRipple type="submit" label="Save Changes" [disabled]="!this.user && submitted" class="p-button-help w-full border-round-sm"
+                    style="background-color: #92278F; height: 46px; border-radius: 6px; gap: 10px;
+            font-size: 16px; font-weight: 400;" (click)="createUser(user)">
+                    <i *ngIf="submitted" class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog></p-confirmDialog>

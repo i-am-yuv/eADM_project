@@ -20,6 +20,7 @@ export class LoginComponent {
   constructor(private loginService:LoginService,private router: Router, private formBuilder: FormBuilder, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.generateCaptcha();
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.minLength(5)]),
@@ -70,6 +71,12 @@ export class LoginComponent {
         sessionStorage.setItem('token', res.jwt);
         sessionStorage.setItem('refreshToken', res.refreshToken);
 
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Login Success',
+          detail: 'Login Successful',
+          life: 3000,
+        });
         setTimeout(() => {
           this.router.navigate(['/home']);
         }, 2000);

@@ -44,9 +44,16 @@
                 <div style="font-size: 18px; font-weight: 400; color: #101828;" class="mb-3">E - ADM Reports</div>
                 <!-- Table Starts From here -->
                 <div > 
-                    <p-table [value]="allRecords" [paginator]="true" [rows]="10"  
-                        [rowsPerPageOptions]="[10, 20, 50]" [scrollable]="true">
-                        <ng-template pTemplate="header">
+                    <p-table [value]="files" [paginator]="true" [rows]="10"  
+                        [rowsPerPageOptions]="[10, 20, 50]" [scrollable]="true"
+                        
+                        #dt  [rows]="10" [paginator]="true" [totalRecords]="totalRecords"
+      [rowsPerPageOptions]="[10, 25, 50]" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadPage($event)"
+      [globalFilterFields]="[ 'noOfRecords','fileName','status','creationDate']" responsiveLayout="scroll"
+       [rowHover]="true" dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+                        >
+                        <ng-template pTemplate="header" >
                             <tr >
                                 <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;">Date</th>
                                 <th style="background-color: #92278F;color: #FFFFFF;font-weight: 700;"> File Name</th>
@@ -58,7 +65,7 @@
                         </ng-template>
                         <ng-template pTemplate="body" let-record let-rowIndex="rowIndex">
                             <tr [ngClass]="{ 'oddRow':rowIndex % 2 === 0}" >
-                                <td style="color: #6D6D6D;">{{ record.date }}</td>
+                                <td style="color: #6D6D6D;">{{ record.creationDate }}</td>
                                 <td style="color: #6D6D6D;">{{ record.fileName }}</td>
                                 <td style="color: #6D6D6D;">{{ record.noOfRecords }}</td>
                                 <td  *ngIf="record.status=='Partially Uploaded'" class="flex align-items-center justify-content-start" >
@@ -67,13 +74,13 @@
                                     {{ record.status }}
                                 </div>
                                 </td>
-                                <td  *ngIf="record.status=='failure'" class="flex align-items-center justify-content-start" >
+                                <td  *ngIf="record.status=='Failure'" class="flex align-items-center justify-content-start" >
                                     <div class=" flex align-items-center justify-content-center p-1 mb-1" style="font-size: 14px;font-weight:400; color:#DC2626;background-color: #FECACA;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #DC2626;">
                                     
                                     {{ record.status }}
                                 </div>
                                 </td>
-                                <td  *ngIf="record.status=='success'" class="flex align-items-center justify-content-start" >
+                                <td  *ngIf="record.status=='Success'" class="flex align-items-center justify-content-start" >
                                     <div class=" flex align-items-center justify-content-center p-1 mb-1" style="font-size: 14px;font-weight:400; color:#16A34A;background-color: #BBF7D0;border-radius: 16px;align-items: center;text-align: center;width: 97px;border: 1px solid #16A34A;">
                                     
                                     {{ record.status }}
@@ -83,7 +90,7 @@
                                     <div class="flex gap-3" style="align-items: center; justify-content: start;">
                                         <i class="pi pi-eye" style="color: #6D6D6D; cursor: pointer;" (click)="viewReport(record.fileName)"></i>
                                         
-                                        <i class="pi pi-download" style="color: #6D6D6D; cursor: pointer;"></i>
+                                        <i class="pi pi-download" style="color: #6D6D6D; cursor: pointer;" (click)="downloadPDF()"></i>
                                     </div>
                                 </td>
                             </tr>
