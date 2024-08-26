@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiurl: 'http://localhost:9999/eadm/api',
+    apiurl: 'http://10.20.3.93:9999/eadm/api',
   };
   
   /*

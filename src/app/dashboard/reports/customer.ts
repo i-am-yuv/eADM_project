@@ -1,7 +1,9 @@
 export interface Customer {
     id?:any;
     customerName?:any;
-    accountNumber?:any;
+    customerAccountNo?:any;
+    customerPhoneNo?:any;
+    customerReferenceId?:any;
     emiAmount?:any;
     transactionId?:any;
     status?:any;

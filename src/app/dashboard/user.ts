@@ -1,8 +1,15 @@
-export interface User {
+export interface User{
     id?:any;
     userName?:any;
-    phoneNumber?:any;
-    role?:any;
+    email?:any;
+    mobileNumber?:any;
     status?:any;
     action?:any;
+    role?:any;
+    // userName?:any;
+}
+
+export interface Role{
+    id?:any;
+    name?:any;
 }

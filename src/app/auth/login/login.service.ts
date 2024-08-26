@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,7 +10,12 @@ export class LoginService {
   apiurl: string = environment.apiurl;
 
   constructor(private http: HttpClient) { }
-
+  
+  async getLocalIPs() {
+    var url = this.apiurl + '/ip/get-ip';
+    const ipaddress = await lastValueFrom(this.http.get<any>(url));
+    return ipaddress;
+  }
   async doLogin(credentials: any) {
     var url = this.apiurl + '/auth/authenticate';
     const login = await lastValueFrom(this.http.post<any>(url, credentials));

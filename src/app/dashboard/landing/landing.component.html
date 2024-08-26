@@ -24,10 +24,12 @@
                 </div>
                 <div class="text-left">
                     <div class="flex gap-1" style="justify-content: start; align-items: center;">
-                      <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #000000;">6453 Harshath  Khan</div>
-                      <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #92278F;">(sm)</div>
+                        <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #000000;">6453 Harshath Khan
+                        </div>
+                        <div class="text-sm 2xl:text-lg" style=" font-weight: 500; color: #92278F;">(sm)</div>
                     </div>
-                    <div class="text-sm 2xl:text-lg" style=" font-weight: 600; color: #92278F;">Sr Manager - DC 900</div>
+                    <div class="text-sm 2xl:text-lg" style=" font-weight: 600; color: #92278F;">Sr Manager - DC 900
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,38 +62,38 @@
             </div>
 
             <div class="border-1 "
-                style="height: 103px; border-radius: 4px; border-width: 1px; margin-top: 10px; border-color: #B0B0B0; ">
-
-                <div
-                    style="font-size: 14px; font-weight: 600; color: #B0B0B0; margin-top: 12px; margin-bottom: 12px; margin-left: 16px;">
-                    Upload here....</div>
-                <div class="border-1" style="border-color: #B0B0B0;   border-top: 1px;"></div>
-
-                <div class="flex mt-1"
-                    style="justify-content: space-between; align-items: center; flex-wrap: wrap-reverse;">
-                    <div class="col-8">
+                style="border-radius: 4px; border-width: 1px; margin-top: 10px; border-color: #B0B0B0; ">
+                <div class="flex justify-content-between p-3">
+                    <div style="font-size: 14px; font-weight: 600; color: #B0B0B0;">
+                        Upload here....</div>
+                    <div (click)="triggerFileInput()" style="font-size: 14px; font-weight: 600; color: #B0B0B0;">
+                        <i class="pi pi-paperclip" style="color: #6D6D6D;"></i>
                     </div>
 
-                    <div class="col-4">
-                        <div style="display: flex; justify-content: end; align-items: center;">
-                            <i class="pi pi-paperclip" style="color: #6D6D6D;"></i>
-                            <i class="pi pi-image mx-4 " style="color: #6D6D6D;"></i>
+                    <!-- upload file-->
+                    <input type="file" id="fileInput" (change)="onFileChange($event)" accept=".xlsx"
+                        style="display: none;" />
+                </div>
+                <div class="border-1" style="border-color: #B0B0B0;   border-top: 1px;"></div>
 
-                            <!-- Upload Button -->
-                            <!-- <div class="flex align-items-center justify-content-center mx-2"
-                                style="width: 145px; height: 32px; border-radius: 4px; background-color:#92278F; cursor: pointer;">
-                                <div style="font-size: 16px; font-weight: 600; color: #FFFFFF;">Upload</div>
-                            </div> -->
+                <div class="w-full flex align-items-center justify-content-between p-2">
+                    <div>
+                        <p class="text-sm" *ngIf="fileName.length>0">{{fileName}}</p>
+                        <!-- <i class="pi pi-spin pi-spinner" style="color: #6D6D6D;" *ngIf="isUploading"></i> -->
 
-                            <!-- New Button As FileUpload -->
-                            <div class="">
-                                <p-fileUpload mode="basic" name="file" [url]="uploadUrl" accept=".xlsx"
-                                    [maxFileSize]="1000000" [auto]="true" label="Upload&Validate" chooseLabel="Upload&Validate"
-                                    class="mr-2 inline-block p-button-success"
-                                    (onUpload)="importResponseHandler($event)"
-                                    (onError)="importErrorHandler($event)"></p-fileUpload>
-                            </div>
-                        </div>
+                    </div>
+
+                    <div>
+                        <i  class="text-sm gap-2" *ngIf="isUploading">Uploading & Validating ......</i>
+                    
+                        <i class="pi pi-spin pi-spinner" style="font-size: 20px;" *ngIf="isUploading"></i>
+                    </div>
+
+                    <div class="flex w-fit gap-2"
+                        style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse; cursor: pointer;"
+                        (click)="uploadFile()">
+                        <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">Upload
+                            & Validate</div>
                     </div>
                 </div>
 
@@ -103,56 +105,69 @@
             style="flex-wrap: wrap; justify-content: space-between; align-self: center; margin-top: 32px;">
 
             <!-- <div class=""> -->
-                <!-- Success -->
-                <div class="flex col-12 md:col-10 lg:col-10 border-2"
-                    style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000;">
+            <!-- Success -->
+            <div class="flex col-12 md:col-10 lg:col-10 border-2"
+                style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000;">
 
-                    <div class="col-4 flex ml-2" style="justify-content: start;align-items: center;">
-                        <i class="pi pi-check" style="color: #16A34A;"></i>
+                <div *ngIf="!isuploadProgress" class="col-4 flex ml-2" style="justify-content: start;align-items: center;">
+                    <i  class="pi pi-check" style="color: #16A34A;"></i>
 
-                        <div class="ml-2 lg:text-xl sm:text-sm m:text-base" style="font-weight: 600; color: #16A34A;">
-                            Uploaded file validated</div>
-                    </div>
-<div class="col-8 flex align-items-center justify-content-end gap-4 px-4">
-    <div class="">
-        <div class="flex w-fit gap-2"
-            style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
-         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse; cursor: pointer;"
-         (click)="downloadPDF()">
-            <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
-            <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">
-                Download</div>
-        </div>
-    </div>
-    <div class="">
-        <div class="flex w-fit gap-2"
-            style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
-         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse; cursor: pointer;"
-         (click)="downloadPDF()">
-            <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
-            <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">
-                Present For EMI</div>
-        </div>
-        
-    </div>
-</div>
+                    <div class="ml-2 lg:text-xl sm:text-sm m:text-base" style="font-weight: 600; color: #16A34A;">
+                        Uploaded file validated</div>
+                     
+    
                 </div>
-                <!-- Failed -->
-                <div *ngIf="false" class="flex border-2"
-                    style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000; flex-wrap: wrap;">
-                    <div class="col-7 flex ml-2" style="justify-content: start;align-items: center;">
-                        <i class="pi pi-times" style="color: #C13E30;"></i>
-                        <div class="ml-2 lg:text-xl sm:text-sm m:text-base" style="font-weight: 600; color: #C13E30;">
-                            Error occurred</div>
-                    </div>
-                    <div class="col-4">
-                        <div class="flex"
-                            style="justify-content: center; align-items: center;  background-color: #F3EEED; border-radius: 4px;
-                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; cursor: pointer;">
-                            <div class="" style="font-size: 16px; font-weight: 600; color: #92278F;">Check</div>
+                
+                <div *ngIf="isuploadProgress" class="col-4 flex ml-2" style="justify-content: start;align-items: center;">
+                    <i *ngIf="isvalidFileRecords" class="pi pi-check" style="color: #16A34A;"></i>
+
+                    <div *ngIf="isvalidFileRecords" class="ml-2 lg:text-xl sm:text-sm m:text-base" style="font-weight: 600; color: #16A34A;">
+                        Uploaded file validated</div>
+                     
+                        <i *ngIf="!isvalidFileRecords" class="pi pi-times" style="color: red;"></i>
+                    <div *ngIf="!isvalidFileRecords" class="ml-2 lg:text-sm sm:text-sm m:text-base" style="font-weight: 600; color: red;">
+                      Error Occurred While Processing File</div>
+                </div>
+                <div class="col-8 flex align-items-center justify-content-end gap-4 px-4">
+                    <div class="">
+                        <div class="flex w-fit gap-2"
+                            style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
+         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse; cursor: pointer;"
+                            (click)="downloadPDF()">
+                            <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
+                            <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">
+                                Download</div>
                         </div>
                     </div>
+                    <div class="">
+                        <div class="flex w-fit gap-2"
+                            style="justify-content: center; align-items: center;  background-color: #92278F; border-radius: 4px;
+         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; flex-wrap: wrap-reverse; cursor: pointer;"
+                            >
+                            <i class="pi pi-download text-xl" style="color: #FFFFFF;"></i>
+                            <div class="lg:text-base sm:text-sm md:text-sm" style="font-weight: 600; color: #FFFFFF;">
+                                Present For EMI</div>
+                        </div>
+
+                    </div>
                 </div>
+            </div>
+            <!-- Failed -->
+            <div *ngIf="false" class="flex border-2"
+                style="justify-content: space-between; align-items: center; border-radius: 4px; border-color: #000000; flex-wrap: wrap;">
+                <div class="col-7 flex ml-2" style="justify-content: start;align-items: center;">
+                    <i class="pi pi-times" style="color: #C13E30;"></i>
+                    <div class="ml-2 lg:text-xl sm:text-sm m:text-base" style="font-weight: 600; color: #C13E30;">
+                        Error occurred</div>
+                </div>
+                <div class="col-4">
+                    <div class="flex"
+                        style="justify-content: center; align-items: center;  background-color: #F3EEED; border-radius: 4px;
+                         padding-top: 6px; padding-bottom: 6px; padding-left: 15px; padding-right: 15px; cursor: pointer;">
+                        <div class="" style="font-size: 16px; font-weight: 600; color: #92278F;">Check</div>
+                    </div>
+                </div>
+            </div>
             <!-- </div> -->
 
             <!-- <div class="col-6"></div> -->
@@ -163,10 +178,10 @@
             style="flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 32px;">
 
             <div class="col-12 md:col-10 lg:col-10">
-                <div class="border-1 p-3" style=" border-radius: 1px; border-width: 1px;border-color: #000000;">
-                    <div style="font-size: 16px; font-weight: 600; color: #4F4F4F;" class="mb-3">E-ADM Reports</div>
+                <!-- <div class="border-1 p-3" style=" border-radius: 1px; border-width: 1px;border-color: #000000;"> -->
+                    <!-- <div style="font-size: 16px; font-weight: 600; color: #4F4F4F;" class="mb-3">E-ADM Reports</div> -->
                     <!-- Table Starts From here -->
-                    <div class="">
+                    <!-- <div class="">
                         <div class="card">
                             <p-table [value]="records" [paginator]="true" [rows]="10" [first]="first"
                                 [showCurrentPageReport]="true"
@@ -192,8 +207,8 @@
                                     [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />
                             </p-table>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
             </div>
 
             <div class="col-0 md:col-2 lg:col-2"></div>
